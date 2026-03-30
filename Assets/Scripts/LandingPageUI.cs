@@ -1,11 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.InputSystem.UI;
 
 public class LandingPageUI : MonoBehaviour
 {
+    const string RugbyPitchSceneName = "RugbyPitch";
+
     [SerializeField] GameObject playListRowPrefab;
 
     static readonly Color BgDark = new(0.12f, 0.14f, 0.18f, 1f);
@@ -24,9 +27,6 @@ public class LandingPageUI : MonoBehaviour
     GameObject _rowTemplate;
 
     GameObject _listPanel;
-    GameObject _detailPanel;
-    Text _detailTitle;
-    Play _selectedPlay;
 
     GameObject _createModal;
     InputField _createNameField;
@@ -85,7 +85,6 @@ public class LandingPageUI : MonoBehaviour
         bg.raycastTarget = false;
 
         BuildListPanel(safe.transform);
-        BuildDetailPanel(safe.transform);
         BuildCreateModal(safe.transform);
         BuildDeleteModal(safe.transform);
 
@@ -199,70 +198,6 @@ public class LandingPageUI : MonoBehaviour
         emptyText.color = TextMuted;
         emptyText.alignment = TextAnchor.MiddleCenter;
         emptyText.text = "No plays yet.\nTap \"New play\" to create one.";
-    }
-
-    void BuildDetailPanel(Transform parent)
-    {
-        _detailPanel = new GameObject("DetailPanel");
-        _detailPanel.transform.SetParent(parent, false);
-        var root = _detailPanel.AddComponent<RectTransform>();
-        StretchFull(root);
-        var bg = _detailPanel.AddComponent<Image>();
-        bg.color = BgDark;
-
-        var topBar = new GameObject("TopBar");
-        topBar.transform.SetParent(root, false);
-        var topRt = topBar.AddComponent<RectTransform>();
-        topRt.anchorMin = new Vector2(0, 1);
-        topRt.anchorMax = new Vector2(1, 1);
-        topRt.pivot = new Vector2(0.5f, 1);
-        topRt.sizeDelta = new Vector2(0, 120);
-        topRt.anchoredPosition = Vector2.zero;
-        topBar.AddComponent<Image>().color = Panel;
-        var topLayout = topBar.AddComponent<HorizontalLayoutGroup>();
-        topLayout.padding = new RectOffset(24, 24, 16, 16);
-        topLayout.childAlignment = TextAnchor.MiddleLeft;
-        topLayout.spacing = 16;
-        topLayout.childControlWidth = false;
-        topLayout.childControlHeight = true;
-        topLayout.childForceExpandWidth = false;
-        topLayout.childForceExpandHeight = true;
-
-        var backGo = CreateButton(topBar.transform, "Back", Panel, 200, 72, OnDetailBack);
-        backGo.GetComponent<Image>().color = new Color(0.25f, 0.27f, 0.33f, 1f);
-
-        var titleGo = new GameObject("DetailTitle");
-        titleGo.transform.SetParent(topBar.transform, false);
-        _detailTitle = titleGo.AddComponent<Text>();
-        _detailTitle.font = _font;
-        _detailTitle.fontSize = 36;
-        _detailTitle.fontStyle = FontStyle.Bold;
-        _detailTitle.color = TextPrimary;
-        _detailTitle.alignment = TextAnchor.MiddleLeft;
-        _detailTitle.text = "Play";
-        var titleLe = titleGo.AddComponent<LayoutElement>();
-        titleLe.flexibleWidth = 1f;
-        titleLe.minWidth = 200;
-
-        var delGo = CreateButton(topBar.transform, "Delete", Danger, 200, 72, OnDetailDelete);
-        var delLe = delGo.GetComponent<LayoutElement>() ?? delGo.AddComponent<LayoutElement>();
-        delLe.preferredWidth = 200;
-
-        var body = new GameObject("Body");
-        body.transform.SetParent(root, false);
-        var bodyRt = body.AddComponent<RectTransform>();
-        bodyRt.anchorMin = new Vector2(0, 0);
-        bodyRt.anchorMax = new Vector2(1, 1);
-        bodyRt.offsetMin = new Vector2(40, 48);
-        bodyRt.offsetMax = new Vector2(-40, -136);
-        var bodyText = body.AddComponent<Text>();
-        bodyText.font = _font;
-        bodyText.fontSize = 30;
-        bodyText.color = TextMuted;
-        bodyText.alignment = TextAnchor.UpperLeft;
-        bodyText.text = "Diagram and steps for this play will appear here.";
-
-        _detailPanel.SetActive(false);
     }
 
     void BuildCreateModal(Transform parent)
@@ -542,26 +477,10 @@ public class LandingPageUI : MonoBehaviour
 
     void OnOpenPlay(Play play)
     {
-        _selectedPlay = play;
-        _detailTitle.text = play.name;
-        _listPanel.SetActive(false);
-        _detailPanel.SetActive(true);
-    }
-
-    void OnDetailBack()
-    {
-        _detailPanel.SetActive(false);
-        _listPanel.SetActive(true);
-        _selectedPlay = null;
-    }
-
-    void OnDetailDelete()
-    {
-        if (_selectedPlay == null)
+        if (play == null)
             return;
-        _pendingDelete = _selectedPlay;
-        _deleteMessage.text = $"Delete \"{_pendingDelete.name}\"?";
-        _deleteModal.SetActive(true);
+        PlayNavContext.CurrentPlay = play;
+        SceneManager.LoadScene(RugbyPitchSceneName);
     }
 
     void OnNewPlayClicked()
@@ -612,9 +531,6 @@ public class LandingPageUI : MonoBehaviour
 
         _plays.RemoveAll(p => p.id == _pendingDelete.id);
         _storage.Save(_plays);
-
-        if (_selectedPlay != null && _selectedPlay.id == _pendingDelete.id)
-            OnDetailBack();
 
         CloseDeleteModal();
         RefreshList();
