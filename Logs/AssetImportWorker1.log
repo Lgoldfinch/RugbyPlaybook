@@ -7,9 +7,9 @@ Darwin version:          25.3.0
 Architecture:            arm64
 Running under Rosetta:   NO
 Available memory:        131072 MB
-Date:                    2026-03-30T18:35:50Z
+Date:                    2026-04-01T21:56:21Z
 [Licensing::Module] Trying to connect to existing licensing client channel...
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-louis" at "2026-03-30T18:35:50.370097Z"
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-louis" at "2026-04-01T21:56:21.304164Z"
 
 COMMAND LINE ARGUMENTS:
 /Applications/Unity/Hub/Editor/6000.4.0f1/Unity.app/Contents/MacOS/Unity
@@ -23,7 +23,7 @@ AssetImportWorker1
 -logFile
 Logs/AssetImportWorker1.log
 -srvPort
-56827
+56558
 -licensingIpc
 LicenseClient-louis
 -force-metal
@@ -73,7 +73,7 @@ Successfully changed project path to: /Users/louis/git/louis/Playbook
     "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
 Player connection [8453238912]  Target information:
 
-Player connection [8453238912]  * "[IP] 192.168.1.86 [Port] 0 [Flags] 2 [Guid] 619173517 [EditorId] 619173517 [Version] 1048832 [Id] OSXEditor(0,louism4mbp) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" 
+Player connection [8453238912]  * "[IP] 192.168.1.87 [Port] 0 [Flags] 2 [Guid] 2026766325 [EditorId] 2026766325 [Version] 1048832 [Id] OSXEditor(0,louism4mbp) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" 
 
 Player connection [8453238912] Host joined multi-casting on [225.0.0.222:54997]...
 Player connection [8453238912] Host joined alternative multi-casting on [225.0.0.222:34997]...
@@ -104,51 +104,51 @@ MSL Version: 3.0
 Has Float MSAA: 1
 Has Float Filtering: 1
 ReadWrite Texture Tier: 2
-[Licensing::Client] Handshaking with LicensingClient:
-  Version:                 1.18.1+9fbee8e
-  Session Id:              9395bba91ecf47979d2001211497eef6
-  Correlation Id:          831e00c9300ee837df929c33f895c4a1
-  External correlation Id: 8822128559511284157
-  Machine Id:              VAYnRw6XWkh9rWv/epKwm6yM3A0=
-[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-louis" (connect: 0.00s, validation: 0.00s, handshake: 0.22s)
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-louis-notifications" at "2026-03-30T18:35:50.589384Z"
-[Licensing::Module] Licensing Background thread has ended after 0.22s
 Initialize mono
 Mono path[0] = '/Applications/Unity/Hub/Editor/6000.4.0f1/Unity.app/Contents/Resources/Scripting/Managed'
 Mono path[1] = '/Applications/Unity/Hub/Editor/6000.4.0f1/Unity.app/Contents/Resources/Scripting/MonoBleedingEdge/lib/mono/unityjit-macos'
 Mono config path = '/Applications/Unity/Hub/Editor/6000.4.0f1/Unity.app/Contents/Resources/Scripting/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56018
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56361
 CodeReloadManager initialized
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: /Applications/Unity/Hub/Editor/6000.4.0f1/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: /Applications/Unity/Hub/Editor/6000.4.0f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
-Registered in 0.000398 seconds.
+Registered in 0.000272 seconds.
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.18.1+9fbee8e
+  Session Id:              f8cfca38935a459da39bcd8cd969d9e1
+  Correlation Id:          edd23dc48f4313e2a8b4b7db8158a5c4
+  External correlation Id: 7459086966244964158
+  Machine Id:              VAYnRw6XWkh9rWv/epKwm6yM3A0=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-louis" (connect: 0.00s, validation: 0.01s, handshake: 0.75s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-louis-notifications" at "2026-04-01T21:56:22.067342Z"
+[Licensing::Module] Licensing Background thread has ended after 0.76s
 Package Manager log level set to [2]
 [Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] Unable to send message (not connected to server process).
 [Package Manager] Cannot connect to Unity Package Manager local server
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.192 seconds
-Domain Reload Profiling: 391ms
-	BeginReloadAssembly (38ms)
-	RebuildCommonClasses (19ms)
-	RebuildNativeTypeToScriptingClass (8ms)
+- Finished resetting the current domain, in  0.199 seconds
+Domain Reload Profiling: 406ms
+	BeginReloadAssembly (46ms)
+	RebuildCommonClasses (20ms)
+	RebuildNativeTypeToScriptingClass (7ms)
 	initialDomainReloadingComplete (26ms)
-	LoadAllAssembliesAndSetupDomain (107ms)
-		LoadAssemblies (38ms)
-		AnalyzeDomain (102ms)
+	LoadAllAssembliesAndSetupDomain (108ms)
+		LoadAssemblies (45ms)
+		AnalyzeDomain (103ms)
 			TypeCache.Refresh (102ms)
-				TypeCache.ScanAssembly (94ms)
-	FinalizeReload (193ms)
+				TypeCache.ScanAssembly (95ms)
+	FinalizeReload (199ms)
 		SetupLoadedEditorAssemblies (0ms)
 			InitializePlatformSupportModulesInManaged (22ms)
-			BeforeProcessingInitializeOnLoad (42ms)
-			ProcessInitializeOnLoadAttributes (52ms)
-			ProcessInitializeOnLoadMethodAttributes (36ms)
+			BeforeProcessingInitializeOnLoad (45ms)
+			ProcessInitializeOnLoadAttributes (53ms)
+			ProcessInitializeOnLoadMethodAttributes (38ms)
 [CoreBusinessMetrics] Unexpected thread when updating session info.
 ========================================================================
 Worker process is ready to serve import requests
@@ -207,41 +207,1385 @@ Native extension for WebGL target not found
 [Package Manager] Cannot connect to Unity Package Manager local server
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.363 seconds
-Domain Reload Profiling: 711ms
-	BeginReloadAssembly (60ms)
-		CreateAndSetChildDomain (11ms)
+- Finished resetting the current domain, in  0.376 seconds
+Domain Reload Profiling: 763ms
+	BeginReloadAssembly (64ms)
+		CreateAndSetChildDomain (10ms)
 	RebuildCommonClasses (20ms)
 	RebuildNativeTypeToScriptingClass (8ms)
-	initialDomainReloadingComplete (25ms)
-	LoadAllAssembliesAndSetupDomain (236ms)
-		LoadAssemblies (127ms)
-		AnalyzeDomain (132ms)
-			TypeCache.Refresh (99ms)
+	initialDomainReloadingComplete (29ms)
+	LoadAllAssembliesAndSetupDomain (266ms)
+		LoadAssemblies (164ms)
+		AnalyzeDomain (131ms)
+			TypeCache.Refresh (97ms)
 				TypeCache.ScanAssembly (90ms)
 			BuildScriptInfoCaches (27ms)
 			ResolveRequiredComponents (5ms)
-	FinalizeReload (363ms)
+	FinalizeReload (377ms)
 		SetupLoadedEditorAssemblies (0ms)
-			BeforeProcessingInitializeOnLoad (72ms)
-			ProcessInitializeOnLoadAttributes (156ms)
-			ProcessInitializeOnLoadMethodAttributes (61ms)
+			BeforeProcessingInitializeOnLoad (74ms)
+			ProcessInitializeOnLoadAttributes (163ms)
+			ProcessInitializeOnLoadMethodAttributes (62ms)
 WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
 WARNING: Shader Did you use #pragma only_renderers and omit this platform?
 WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
 Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
 Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
 Launching external process: /Applications/Unity/Hub/Editor/6000.4.0f1/Unity.app/Contents/Helpers/UnityShaderCompiler
-Launched and connected shader compiler UnityShaderCompiler after 0.02 seconds
+Launched and connected shader compiler UnityShaderCompiler after 0.03 seconds
 Unloading 26 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 7020 unused Assets / (4.9 MB). Loaded Objects now: 7848.
-Memory consumption went from 170.0 MB to 165.1 MB.
-Total: 4.646875 ms (FindLiveObjects: 0.274500 ms CreateObjectMapping: 0.114209 ms MarkObjects: 3.501750 ms  DeleteObjects: 0.756084 ms)
+Unloading 7022 unused Assets / (5.0 MB). Loaded Objects now: 7852.
+Memory consumption went from 164.4 MB to 159.3 MB.
+Total: 5.309291 ms (FindLiveObjects: 0.345167 ms CreateObjectMapping: 0.203000 ms MarkObjects: 3.712792 ms  DeleteObjects: 1.048166 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 100918.857425 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_119.asset
+  importAddress: Guid(d7d6724c987f94ef59453a71e70c3ff9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_119.asset using Guid(d7d6724c987f94ef59453a71e70c3ff9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'bbba5c17dae9463d1c340ce18650ab65') in 0.036127958 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=e7e75f641a0bfd781a30aabd0998d839 DependenciesID=14fac5a19e8db3e11c98da60d59cfd96 StaticDependenciesID=cb590b56525665db9e32af00066aa9c4 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Elements/element (7).png
+  importAddress: Guid(387279197f16a4f76adcc38b47afdb69) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Elements/element (7).png using Guid(387279197f16a4f76adcc38b47afdb69) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '21227b7682562d20143d6e00cc7445b9') in 0.021951667 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=4bbe14ddba272d5e20638b9b9e1bebe7 DependenciesID=ea0abadd789e30de111a858a9973f33b StaticDependenciesID=63af881e6c3af30b6e7618f91f3cc8bb 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000046 seconds.
+  path: Assets/Sprites/Palettes/Equipment/elements_12.asset
+  importAddress: Guid(b690d2e4c8a85400a87c8e72d8145a46) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/Equipment/elements_12.asset using Guid(b690d2e4c8a85400a87c8e72d8145a46) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'f6c4f6c97bbcca8a436d1ea0dfe1fcf8') in 0.001584416 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=6b90c0ebef7236c9d976b567f14cf35e DependenciesID=3f2886a568c9e9469ece48a4d6c7c896 StaticDependenciesID=f938215c26688e579f76b3dff8f28d0a 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_200.asset
+  importAddress: Guid(9e3ad1590e6384d8294a367e68fafd52) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_200.asset using Guid(9e3ad1590e6384d8294a367e68fafd52) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'fee4ae9529953d87a6f8be8fd01bbb46') in 0.002134875 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=d5e78241ac0f267ca4535497dcb73230 DependenciesID=9a33c82d4301c19790d49cbb72beb2a9 StaticDependenciesID=bb465ae612f57de401329c5c9f2bb5d5 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/Scenes/RugbyPitch.unity
+  importAddress: Guid(20cf63593b6374caa8abf42717a59c77) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scenes/RugbyPitch.unity using Guid(20cf63593b6374caa8abf42717a59c77) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'f3fc301b6b5710031d3b8d9e5bc701f8') in 0.0014525 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=3b31ad4a0c05814f29663039fc5264ba DependenciesID=e08ddc3a08fb7f752dc026f1f55d76e8 StaticDependenciesID=4b70d7c6510d642249090c747c95b699 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Equipment/ball_basket4.png
+  importAddress: Guid(8bfd32b83487a4195b2b477be81dd9e0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Equipment/ball_basket4.png using Guid(8bfd32b83487a4195b2b477be81dd9e0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'd48620bebb98d730c25bfb0fc7813ffa') in 0.003190292 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=71fbd2377102eacf6eecf5e709b2a534 DependenciesID=8cedf967471a712797d400fef9fd1f32 StaticDependenciesID=7bf845b8c426172a80e0428f55f28d39 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_6.asset
+  importAddress: Guid(e38cdf75a70f1412081bdb30303788b6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_6.asset using Guid(e38cdf75a70f1412081bdb30303788b6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'c7f2572feedb401c86c811aac4e86a5a') in 0.002299875 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=8caaa942d4fcc96139f8aedb28ae6b33 DependenciesID=c5f21739337bafd144673c2015ee304d StaticDependenciesID=b82182433f1c8a8dc8ef2318ff035d2c 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_167.asset
+  importAddress: Guid(0abb1a4d3164942879e95a975e1b5040) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_167.asset using Guid(0abb1a4d3164942879e95a975e1b5040) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'b159366486b4c23ace8dec0de4e5f464') in 0.001970458 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=c04e6496586058f7b31982bdc44c831a DependenciesID=91e832b5b19fc5200df23829559e326d StaticDependenciesID=62bf3778713e51c1e187793fccb1ff34 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_12.asset
+  importAddress: Guid(2fe12eaac92e14a12bee17d751d1d82b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_12.asset using Guid(2fe12eaac92e14a12bee17d751d1d82b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'edfec78277cbfea09249cf0f6a57810d') in 0.001825417 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=ab5dff28c1335332082d7e8683d2b873 DependenciesID=eea0b9bfb7cd5a2e74324d5f1a4bba59 StaticDependenciesID=a8a6581d9abeccf01cee811173e83198 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000255 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Elements/element (43).png
+  importAddress: Guid(2953c34bc8c8e4de38d5eacd433f53de) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Elements/element (43).png using Guid(2953c34bc8c8e4de38d5eacd433f53de) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '18f62fb847d9c8d6625607da083cec55') in 0.003758125 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=64ce08a58fc1541350443a447dd01ed0 DependenciesID=4fb8691d1455aaeb518f4a389d900444 StaticDependenciesID=30679c93117b42f36989fe4ae8181694 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Scripts/PlayNavContext.cs
+  importAddress: Guid(5c78df3422ede4adcb48e3974bae8930) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/PlayNavContext.cs using Guid(5c78df3422ede4adcb48e3974bae8930) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'eca3fc314852011070556ecf7c2d57de') in 0.0015525 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=1e16690bca1de26aa9f114815f77ab80 DependenciesID=4a5e85c82f2cf6a9c305665656be6054 StaticDependenciesID=04fbee9794c37618245bc1a47d34bc82 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Sprites/Palettes/Equipment/elements_27.asset
+  importAddress: Guid(805f62fa962be4121b278087a4a80b8f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/Equipment/elements_27.asset using Guid(805f62fa962be4121b278087a4a80b8f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '6bbb0f1312c1f58ac07483d78eaf0fda') in 0.001834416 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=1cc5cc6b63098ffb8901e74b9c4f82c8 DependenciesID=bd4e83639584d18c50d1f5073b8fdf8e StaticDependenciesID=5a67171321ffc5ee3eb9c0addf7da9db 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_87.asset
+  importAddress: Guid(bb593e05a7ddc4318a4a14f3065dbe16) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_87.asset using Guid(bb593e05a7ddc4318a4a14f3065dbe16) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'b0b67a8c02fac0525b6acd8a5a9b80fe') in 0.001966708 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=eaa287cd3bec5fa56c5e2df49902b99c DependenciesID=82d0ca3f83f8374d3fc58cd9fec1451d StaticDependenciesID=f44867a3a5171c8221e820a065d40e8d 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Scripts/LandingPageUI.cs
+  importAddress: Guid(f6c7d8b9a0f1e2935f6e7d8c9b0a1423) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/LandingPageUI.cs using Guid(f6c7d8b9a0f1e2935f6e7d8c9b0a1423) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '6739a1e82d8fc64064ee3a36edc938d9') in 0.001157334 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=69d5aba42502f9cad9e1463c40dc2b99 DependenciesID=cc68e52c5b6105697ccd278d3b6a44a4 StaticDependenciesID=d4658ce73d5f4ed7c5905be0d1277870 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_2.asset
+  importAddress: Guid(bc28c505c8733445f8345175481a984b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_2.asset using Guid(bc28c505c8733445f8345175481a984b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'dcb1954dfbbd0d77246c3d99ddd6de5d') in 0.001642958 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=590d56f946cb266ef9ac53e6007065eb DependenciesID=fc0da2eeedca39e2090f53f7940d7c1d StaticDependenciesID=d7438aa713619dbc3f26dc7825199877 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_64.asset
+  importAddress: Guid(6850848b4bad04bb9ac7052a5b76c6eb) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_64.asset using Guid(6850848b4bad04bb9ac7052a5b76c6eb) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '640976028ecf8290e4826252f68c5c3c') in 0.001886083 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=62199efac7d9ce6d45f305cd5db7e30a DependenciesID=10576b15b42b716f570fa3f338c4016a StaticDependenciesID=1277c914525cbc7e8d36e67a23469f2c 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Green/characterGreen (8).png
+  importAddress: Guid(cf7e9129cf1374547a11e4cdb2359a53) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Green/characterGreen (8).png using Guid(cf7e9129cf1374547a11e4cdb2359a53) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'd618e634bf81ec6e19fd09418613f915') in 0.003145166 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=c109c7e4e4f906b1347e62c8b9c85b0f DependenciesID=93d09181a4292e1e46b6b9e994c6cf50 StaticDependenciesID=939b11c75c89fed6174caaf61c947c81 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000040 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_110.asset
+  importAddress: Guid(01e9ad2abef90403da53f796eb82888f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_110.asset using Guid(01e9ad2abef90403da53f796eb82888f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'cb09575a40b7925d481add50d610271d') in 0.001747792 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=540ddc9f48a492a6b59c1d7de09ad7fc DependenciesID=bc6899382e4ec30d6e1d315256d1a914 StaticDependenciesID=7be9ac2a1c03d8de05d5e4ec10e541a7 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_129.asset
+  importAddress: Guid(b80cea3d86dc64418913f0be38c437f5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_129.asset using Guid(b80cea3d86dc64418913f0be38c437f5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '386a9d1c750b0dbbf540340e3690cb4c') in 0.001837958 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=8ef574951579998f5035c7936bbd5b00 DependenciesID=86efc2e4f3c4fb0fbed473b8aa508f26 StaticDependenciesID=98cef07df34df537deed1be34652b68f 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000046 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Elements/element (11).png
+  importAddress: Guid(677ce5f04a39d4a1bac4c76f85027f66) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Elements/element (11).png using Guid(677ce5f04a39d4a1bac4c76f85027f66) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '76a4ce9c6acc0bd5c4e65b3728df5b2d') in 0.003227166 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=e106f4ea3b4dc3fc8639a9c1221f0d57 DependenciesID=c07add78419fd8991f425b47b55c631a StaticDependenciesID=84d44693012528b4b5fbec930d046fd3 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_199.asset
+  importAddress: Guid(7eea28dcda5da4b25aa9e4bb2d83acd4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_199.asset using Guid(7eea28dcda5da4b25aa9e4bb2d83acd4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '89aa2d74eaae1b7641f3fcef93484b56') in 0.00203625 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=0a634b674a1ef9e3fca64ad885a0dde0 DependenciesID=65d959a3f9628de5c3b27e2145645c4b StaticDependenciesID=069100e6c17e76051479dce370e95ab3 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_157.asset
+  importAddress: Guid(3c6c1ad60e07148d7bf26b9cfde9e0fd) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_157.asset using Guid(3c6c1ad60e07148d7bf26b9cfde9e0fd) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '28de4166a97f472749e0e72dc6419658') in 0.001712959 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=57b27bbb544f6fb6364e28a8caa800aa DependenciesID=bd6fbbeec59c84586b95e5c2ab441aaa StaticDependenciesID=b08b53fd61955d19ddc04d496c4b31ae 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_25.asset
+  importAddress: Guid(6de92df01c8bc48d48e68ec1b94a8a53) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_25.asset using Guid(6de92df01c8bc48d48e68ec1b94a8a53) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '1a0b4ce503a1705bff4c223d498de5c9') in 0.001900291 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=76fde9ecafb19d42c990c451eda2f988 DependenciesID=1d859fd27c0c0013ad12596703fd908d StaticDependenciesID=389bb466cfe7bf2840c7b06dd6958a2a 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Equipment/ball_bowling1.png
+  importAddress: Guid(5ec079a41f76f4ab98bcf1db3ac34b53) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Equipment/ball_bowling1.png using Guid(5ec079a41f76f4ab98bcf1db3ac34b53) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '72289a37b5ddff512716ed24663c5df9') in 0.003000916 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=403916c54fb7392d092b93dd10aeea4d DependenciesID=d143d4a861e491b61aabcd680be867a4 StaticDependenciesID=1a91b3c3d12e14cd1f995cca0f5e59eb 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Sprites/EventMarkers/PassEventMarker.prefab
+  importAddress: Guid(b5fcad61d667b43548ba1fffa7dfc39e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/EventMarkers/PassEventMarker.prefab using Guid(b5fcad61d667b43548ba1fffa7dfc39e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '7031a1df0c0ebac188b4fcf6ddb45600') in 0.012762334 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=042800d58bb894d7e410d70c91c5df74 DependenciesID=cd6fe7f168aa9b8fa855f1a74d2be7f2 StaticDependenciesID=09e82734fcc129c4672f03243dd0d903 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 7
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_196.asset
+  importAddress: Guid(da7fc1a9f98b04b3595452852fb3bf2e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_196.asset using Guid(da7fc1a9f98b04b3595452852fb3bf2e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '8cf70eb17fbf7d09c7a8ca6e33e92884') in 0.001950792 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=52d094e865ce29198b586e8327051f28 DependenciesID=e87689e3dab4cd66bde6a06086081024 StaticDependenciesID=8e4224146c1b124c36d36ace2dde145f 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Elements/element (47).png
+  importAddress: Guid(53b883c013ef549dba89b8b6622e34f3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Elements/element (47).png using Guid(53b883c013ef549dba89b8b6622e34f3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'c51d4c9ba8a93f67016f4d8db8a23045') in 0.002850917 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=cea82b7ddd069ab0d914a61626bc2fbc DependenciesID=73e1d3d60958f05a057a05806303caee StaticDependenciesID=dd9d884fe2c602196caad92af5f1af83 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Sprites/kenney_sportsPack/Vector/groundGravel.svg
+  importAddress: Guid(efec9a04fb5314ee3b4a8486eeee5cf5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/Vector/groundGravel.svg using Guid(efec9a04fb5314ee3b4a8486eeee5cf5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '40ae59ba6be5d1bf8d4e5e4a8572835e') in 0.00711575 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=a38cb3de4094207cbd7fca6a7912cf44 DependenciesID=05ddc196c7468aa1ca4838245c2afbb0 StaticDependenciesID=aa894c033dcd467ab2c28f63d9537f0e 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/White/characterWhite (6).png
+  importAddress: Guid(c35bdbd1b327541c6a5e189ab8dfe002) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/White/characterWhite (6).png using Guid(c35bdbd1b327541c6a5e189ab8dfe002) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '690b5d55672616946efcd6e1bce41a1c') in 0.003129083 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=7cdc31c3018cb10cda55e8b7e1efffcb DependenciesID=91bd5ad8098dae5ef769519dcab6378f StaticDependenciesID=bfcb1087e83f332fe153478c8f70bbd1 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_193.asset
+  importAddress: Guid(8460c60796f6c496a943a80a16dd566e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_193.asset using Guid(8460c60796f6c496a943a80a16dd566e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'c25412bd8fd359d77d23056781c41eb3') in 0.00183825 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=d5dd6ecad12dc09b3fe37dfce10c02a6 DependenciesID=8d73dc9ae19978508432b6667ff0da77 StaticDependenciesID=7815dcddc4c28926bf32d11efa9ee6f7 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_94.asset
+  importAddress: Guid(e33af11da7f354834913596ba8a9f6ca) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_94.asset using Guid(e33af11da7f354834913596ba8a9f6ca) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '670acc54437e67747bd7b4714f9cca70') in 0.001768625 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=87742f615f53ecf84b00f6b198b0fd78 DependenciesID=fab1fbcb2ad25a921e7c9772790764c1 StaticDependenciesID=350b033776d6bba0ee604159ab6bbd99 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Elements/element (15).png
+  importAddress: Guid(6ca11710a411b45a7b63cb150dae727d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Elements/element (15).png using Guid(6ca11710a411b45a7b63cb150dae727d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '40a6c6b672fd0867d660aab6fa08c6ff') in 0.003545958 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=769b6c7886d9b6a37da08efb42ee36e6 DependenciesID=79dd5510fa01ee877fffc56db27abc78 StaticDependenciesID=be9617b6ae6dadcf55b4547f5550d0ab 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/White/characterWhite (2).png
+  importAddress: Guid(aa847bcf6eea347d29c53758aeb8d03d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/White/characterWhite (2).png using Guid(aa847bcf6eea347d29c53758aeb8d03d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '72345632d221ce166337959d870f8f0f') in 0.00293675 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=043607a4d0f033cafc5d143979126db8 DependenciesID=d6336f12f817f1bd3161d567d821df6b StaticDependenciesID=95582b41fac250fb167f8a339c6f0419 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Special/characterSpecial (10).png
+  importAddress: Guid(fc60d15bba9ec45fcb038e07570cec18) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Special/characterSpecial (10).png using Guid(fc60d15bba9ec45fcb038e07570cec18) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '19d9f152062d6cfc227aa256de0b7405') in 0.002775625 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=c6800e0b3b98c8e174a81eef32182db9 DependenciesID=1f6ca9b1e5a3183c0a33feaf0fe728e0 StaticDependenciesID=5e3685e30365096c7426c23cf5cae894 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Sprites/kenney_sportsPack/Vector/groundBeige_red.svg
+  importAddress: Guid(512406b6b03f24b1a98725e308c9a581) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/Vector/groundBeige_red.svg using Guid(512406b6b03f24b1a98725e308c9a581) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '614145d0e24f3b58d424a8cc85e2e7e6') in 0.002688208 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=9e2b3dbb5cd1f19945b22f82a89097be DependenciesID=b9f5dce744af4f3fd86515425b7d20ab StaticDependenciesID=7a1961d29caa78c161022837c9a1f5be 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_194.asset
+  importAddress: Guid(9fb63df455b5647b8a8109349a1ab657) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_194.asset using Guid(9fb63df455b5647b8a8109349a1ab657) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '1f0b4718afdeea7f92fdc464d2b5fd8d') in 0.001760084 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=b48d27f60e443e9aa05bd403030fcadd DependenciesID=9042b9c9df2511139f2d60c573c66e3e StaticDependenciesID=eb8390c26451033aadbc9698044785dc 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_49.asset
+  importAddress: Guid(4783e470350ba4816810c6cf0e7a1041) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_49.asset using Guid(4783e470350ba4816810c6cf0e7a1041) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'ec0756f45ec5b5ed20dcbaeb9b814ebf') in 0.002651125 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=78249fd4f3810577498e5814f635740d DependenciesID=0513f68f71937b75056ca03017b1c07b StaticDependenciesID=06daa7fa17104c7b663127a39cecd9b2 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Grid.prefab
+  importAddress: Guid(ca246d335b7cc474db6256befe5744bc) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Grid.prefab using Guid(ca246d335b7cc474db6256befe5744bc) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '89140057590279ef2f759917a3f8f54b') in 0.003807 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=8cd9260b1f9c6844ba477d25f82fbe6e DependenciesID=1cb8930d41b8fe74f75e454c763f2658 StaticDependenciesID=5fa5e2763bd7307441347e997832e853 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 21
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Sprites/Palettes/Equipment/elements_32.asset
+  importAddress: Guid(7d88144f15d3145cb81a0ab9be019105) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/Equipment/elements_32.asset using Guid(7d88144f15d3145cb81a0ab9be019105) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '8b0e235f927c84866a4f858ebbb24d25') in 0.001492542 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=4e8986fb9e3c5648069b68f1fe76a36b DependenciesID=03e7e564aa2e345ae636eee1ffc55290 StaticDependenciesID=571fc6f7fe652f10d2fe858a87d5a755 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Sprites/Palettes/Equipment/elements_46.asset
+  importAddress: Guid(551d44cfacbf543e2bb8bd86e3119aad) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/Equipment/elements_46.asset using Guid(551d44cfacbf543e2bb8bd86e3119aad) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'e8130bf7780f9ac1144e6917d161d3cc') in 0.001578417 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=e6709084fd255115d47994e83d11dd49 DependenciesID=5c1a199aa72cf799d7da3f563c6efe18 StaticDependenciesID=9982d613168c0b8582feb0f96b9b8cea 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_205.asset
+  importAddress: Guid(b5783c301582744c2bb6d0d2cd6af030) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_205.asset using Guid(b5783c301582744c2bb6d0d2cd6af030) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'd35539aece57c477c044d02284ae7c27') in 0.00174625 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=8164f5cd87e5efe534d33cadc3b1b408 DependenciesID=0796c45e3e0215f924b6a46980840a48 StaticDependenciesID=5688b8b0dd5194a565e177bc40fb8d4a 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/White/characterWhite (3).png
+  importAddress: Guid(6895adbb4c2344b9e8bbf70c6fa12355) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/White/characterWhite (3).png using Guid(6895adbb4c2344b9e8bbf70c6fa12355) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'cc30683760d0a330a390592d2077f399') in 0.003193666 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=c589968aabbe1ebde7307dc594c8e27b DependenciesID=9bc2d830669eeb1e34626a56844703cb StaticDependenciesID=d25604e72d8a6072fb510a0e78f6b140 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_176.asset
+  importAddress: Guid(977c983b6e12b4a1ea510c393631c1da) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_176.asset using Guid(977c983b6e12b4a1ea510c393631c1da) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'a6a0f007c2f6c5d0b291c79f9affe955') in 0.001866083 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=dfa13592a44e156a86f88f5ccf3a63ff DependenciesID=6c91f3c94f8c1de47efaf0c6d48f6985 StaticDependenciesID=b84f7cee3a328cb95553b86c3b0ad80a 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Equipment/ball_puck.png
+  importAddress: Guid(82719e2e419ac4405aaa1fc7d3c3fd63) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Equipment/ball_puck.png using Guid(82719e2e419ac4405aaa1fc7d3c3fd63) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'b38b1d8a4a4789ed8f3408fa83797f6c') in 0.002896958 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=30b725b21d1e56577ff111bf060c7af2 DependenciesID=90b833f71b585d70a71dda841fd2845d StaticDependenciesID=c4e02d94ddc76d72479f82331aa7c506 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_21.asset
+  importAddress: Guid(f081b3dccb2fb4fd08b9b8071a579c98) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_21.asset using Guid(f081b3dccb2fb4fd08b9b8071a579c98) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'a6ae772f8a154885e6ea5de91ea87138') in 0.0024035 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=aa48b57558f063f96b3d7d89323f0a8b DependenciesID=7d0ab011655d7ab810e58ef2711cddc9 StaticDependenciesID=8fc5bb63e2fd39875eda5b1151b3a619 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Sprites/kenney_sportsPack/Tilesheet/groundTransparent_black.png
+  importAddress: Guid(a3684f0ea3812464b9aecd679d1ec9fa) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/Tilesheet/groundTransparent_black.png using Guid(a3684f0ea3812464b9aecd679d1ec9fa) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '8eca8312f15a05fa532183257b402ac8') in 0.003097375 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=9550f1bc6c10c15c2756c9dff522eebb DependenciesID=34770e63a9ec700499fa78698333e39a StaticDependenciesID=69e978580be43fd2f1fd6dae1523ff1b 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Red/characterRed (7).png
+  importAddress: Guid(d8a76e07995bf461b9f8a8543fc66ae4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Red/characterRed (7).png using Guid(d8a76e07995bf461b9f8a8543fc66ae4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '119c7d68b00bdc2103ee25ae82484619') in 0.002866291 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=d9dcd2354797ba6147c1abb2f3a2560c DependenciesID=fe324bbbf1d20340de4a8773b54b190a StaticDependenciesID=5e3f40265edd0103a42e7c2bcd83f009 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Red/characterRed (6).png
+  importAddress: Guid(87bb6f7041ad34d6a8a7356a4b22870d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Red/characterRed (6).png using Guid(87bb6f7041ad34d6a8a7356a4b22870d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'f5f52f3072e8de24bedf12a5beedcbac') in 0.002647708 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=6eb5fb8725dec1ae4a3e6010163f4425 DependenciesID=298c95eb7d3ff9096174aa3e3120e435 StaticDependenciesID=a5890b023cf65f64181c0db019585a98 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_50.asset
+  importAddress: Guid(d50c39c4cc34c4e28b102c80599bff7b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_50.asset using Guid(d50c39c4cc34c4e28b102c80599bff7b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '8bb6c98c0e93ccc97ba4c1c01c2f65a6') in 0.001788334 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=326761d6628625012c28ba42ffcb53e8 DependenciesID=e3f0aad85967dfe9d1f9abeff2e76aa0 StaticDependenciesID=3327f8cac3f1e58fdea0d1381e6d7b9a 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_207.asset
+  importAddress: Guid(09b75d40dc8e2481eaa3344103fd6d51) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_207.asset using Guid(09b75d40dc8e2481eaa3344103fd6d51) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '3f510c13dcaa2adc0dcb9f3c1b9f2b8c') in 0.001681916 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=4ccd3e78e673ef18c558e8602c2db3e0 DependenciesID=39dfa92dafaa13d7bd5b4e24f817d686 StaticDependenciesID=19426394e9e8539c266c85e3865ba575 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Elements/element (5).png
+  importAddress: Guid(b96252e490e284f2fb6ba3f18054ec88) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Elements/element (5).png using Guid(b96252e490e284f2fb6ba3f18054ec88) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'c5d0ec4a096fb8e11b4533d537fddc2d') in 0.002767792 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=efd87c24fc0c4ea238ee139a4a33f24c DependenciesID=1ccb61da75a87b4c01ae0919a4cdbf5a StaticDependenciesID=3a46b666c3a0afd10df5effcd146c2ff 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Elements/element (19).png
+  importAddress: Guid(39e6d1d34a9b049699e0775f4b4e7782) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Elements/element (19).png using Guid(39e6d1d34a9b049699e0775f4b4e7782) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'c7199058051725708975fd1890c190c9') in 0.004942292 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=a8c01bee376a758cd1f3bc7e28edea10 DependenciesID=2c0008cd0290e5e4efc9d106dcaff523 StaticDependenciesID=b75a2573acb2dd0026eec2b79010e54e 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Elements
+  importAddress: Guid(deda7da54742e4abbb06db8b1ddb3aaf) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Elements using Guid(deda7da54742e4abbb06db8b1ddb3aaf) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'b3aaafdc1cdbe15144e638533d8d0d57') in 0.00121425 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=5b9912cb766cea6c11e9943161850b97 DependenciesID=25f8d77b284ff042d04373c8bd115d11 StaticDependenciesID=1f54ca4a5da191a331d822f507aad9ed 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_186.asset
+  importAddress: Guid(1f87e563d265c4df1884044bf3d8e86c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_186.asset using Guid(1f87e563d265c4df1884044bf3d8e86c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '710663254e3ec6d0ae397427b5c98a94') in 0.001709333 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=874ca32f5cb95c10953fb96f2d10f6ae DependenciesID=42b779a6fcc499957295441a97169d93 StaticDependenciesID=3208032cd6d6abd8e2905e66369f4d04 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_195.asset
+  importAddress: Guid(5850c915c167747bd98f658284849ebe) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_195.asset using Guid(5850c915c167747bd98f658284849ebe) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '98e9084878a3070425127cc2574a6a40') in 0.001947625 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=613b46c6aa5c7b7b48f72f9e85618e34 DependenciesID=261512540b1277430b503a2aff37a540 StaticDependenciesID=4d54abfd70998b74aa8fb47c22393b11 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_11.asset
+  importAddress: Guid(47d94aac2106b4e35b99ee870c1a8ad5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_11.asset using Guid(47d94aac2106b4e35b99ee870c1a8ad5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '54b6fcb8e7519f4135f3407a024d2c6e') in 0.001590958 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=fb41da1dd500fec8259391631886fab4 DependenciesID=c7ecef4712452c490888fba208c903b3 StaticDependenciesID=9dad5e1c6dad1086d909151f3dd72688 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Sprites/Palettes/Equipment/elements_10.asset
+  importAddress: Guid(09d84826921584078a5158be4912f3ac) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/Equipment/elements_10.asset using Guid(09d84826921584078a5158be4912f3ac) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '402f68a43a3c60617cfb7c0f07505c35') in 0.001722584 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=a6511a6f4696b91668f59271f96ba0eb DependenciesID=b48e31cd3d34a73761f6c27863c47d5f StaticDependenciesID=543e503197a426adb4b654e62114deb6 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_32.asset
+  importAddress: Guid(c00aa6153a84c415e936d903fe3fc21c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_32.asset using Guid(c00aa6153a84c415e936d903fe3fc21c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '77978b7250d686d2fc2f48d510125ada') in 0.00172675 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=18a15ba18945dd1931f5c1ac51192e6c DependenciesID=3046b0149b417206a518b3654f941ea2 StaticDependenciesID=2af92b02b152afe48788278d12c4aa3b 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_86.asset
+  importAddress: Guid(608d1729860704ebe9bc21af01056cf6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_86.asset using Guid(608d1729860704ebe9bc21af01056cf6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '26cfc075740f89ffee794093b0598205') in 0.001775875 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=89d23a46a2baab52303386df36a14e68 DependenciesID=4531f3801a4784788f81b692fa66ec13 StaticDependenciesID=76fa649d7c001e7b0ead57bb65b1f33a 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Equipment/racket_handle.png
+  importAddress: Guid(be248be5a662c4b27871b766c684f89e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Equipment/racket_handle.png using Guid(be248be5a662c4b27871b766c684f89e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '76e6cc5a8b0c2f7354519015fa5e3bba') in 0.002580917 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=cab3c68499a063205f8e68cc4e38d636 DependenciesID=6c29625fe02043ff0fd7f703f39882d0 StaticDependenciesID=b88fa3f95ccb9b132756e17ae0f2aa31 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_203.asset
+  importAddress: Guid(a87f5cec2e5f748da88cb192dfc7a2bb) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_203.asset using Guid(a87f5cec2e5f748da88cb192dfc7a2bb) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '7816b904ba6b3eb801133f52c726be11') in 0.002014625 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=2e1e90c1669df81b4f011c70b075f41b DependenciesID=ad24818a2a27f9937122f1658141da40 StaticDependenciesID=2ec22da079d6a1790de823c1fe6d0a9c 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_28.asset
+  importAddress: Guid(0576d86c20a0b4d55a646479581fa8a5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_28.asset using Guid(0576d86c20a0b4d55a646479581fa8a5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'ccd749c2c875d49474b20b3c361eef6a') in 0.002220875 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=f4790d24d82a5b70feb5e9905cb815db DependenciesID=72e4cf50e1a27e3e75af5ba1de81cbc0 StaticDependenciesID=c5ea3e7625388fd946bac2b30d124629 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Elements/element (60).png
+  importAddress: Guid(a4d3a2e4518d047058ce5e51b47279ef) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Elements/element (60).png using Guid(a4d3a2e4518d047058ce5e51b47279ef) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '5d33300e00ab03256f9c28f6452c30fd') in 0.002868708 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=ab5cd64d9dd9a24b5d3857a3a7e9af24 DependenciesID=b5bc8de3f5ccd674a29ab6fc7bfd4060 StaticDependenciesID=ceb595ce4d881a0b4ac0557a11417fe6 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Sprites/Palettes/Equipment/elements_77.asset
+  importAddress: Guid(47bfffa990d4343d28f2db3db71cba49) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/Equipment/elements_77.asset using Guid(47bfffa990d4343d28f2db3db71cba49) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '614e439cf77887bad63204b9add2833d') in 0.001590375 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=4c6c7bcf80fadafc980c44bfb3061ed1 DependenciesID=333d87459c96f146684b9db74fbfeb96 StaticDependenciesID=59f67c6f48c7f6c50a8dab58711a1f88 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Sprites/Palettes/Equipment/elements_63.asset
+  importAddress: Guid(2ab0556ba1be34def8a4b92d11f4b8a5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/Equipment/elements_63.asset using Guid(2ab0556ba1be34def8a4b92d11f4b8a5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '38ac14404219cd633fce0011fe76739b') in 0.001577125 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=c91760f882199ce142813d44551752ad DependenciesID=2fef2d06c4ab6389e41c5c41c2b57d8a StaticDependenciesID=2345c35f8a78d36b1be5ec2bab98976b 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_103.asset
+  importAddress: Guid(961e73cb337c844bead3f1eef8183b1b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_103.asset using Guid(961e73cb337c844bead3f1eef8183b1b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '63a28003f8216621f15283779f199bae') in 0.00164025 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=416a9f89edb5158825c4d04a7ee97f79 DependenciesID=2c66baddc6ffb4565cc0e3886062b1fb StaticDependenciesID=21777a35829fd6ec7d9f6306ae1bec4c 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Elements/element (4).png
+  importAddress: Guid(02b5b6e2c7f334002af363869b21605f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Elements/element (4).png using Guid(02b5b6e2c7f334002af363869b21605f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '90d4d2e5bdd242bb0ef40e93f48608c0') in 0.002685542 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=2ae5419bd7551505ae6f957522a04ccc DependenciesID=0c4e61e09bfc84d1b160eda732725f08 StaticDependenciesID=37b2c0f6630eff882248f79575f6f63e 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Equipment/flag_checkered.png
+  importAddress: Guid(55b16b5a1db834bf0bc0cac55db34c68) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Equipment/flag_checkered.png using Guid(55b16b5a1db834bf0bc0cac55db34c68) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '59fa1f7f25ff39e88010b2e1fccc4cba') in 0.002661958 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=55a837f182161d26987cb2f5c78b3c28 DependenciesID=593819437c56a2e64d72bb301aee6d92 StaticDependenciesID=1bcc87dfc827b476b5c7859ce4a86b5b 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG
+  importAddress: Guid(42b47ca37f9334ca9b6cc7a2afcf1588) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG using Guid(42b47ca37f9334ca9b6cc7a2afcf1588) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '4fe37b5e7ffdf06ea6a27d790b50f035') in 0.001090333 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=089ff02a9351dc7383db87785a1bb850 DependenciesID=8d6d6302273d90bd69b7df015825a060 StaticDependenciesID=6f90811de0d262844deb63ad0df9edba 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Red/characterRed (11).png
+  importAddress: Guid(cf485ae75c85a49099b50ff1aeca38c2) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Red/characterRed (11).png using Guid(cf485ae75c85a49099b50ff1aeca38c2) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '962b1deed7347a32d1949d2aaec36245') in 0.003295709 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=fb7e7718c3787572fdd1ab8e9ba94dc6 DependenciesID=1e1d4932db6a8d29842dcbf70eaf3662 StaticDependenciesID=7cc702f56d34afaa3363bcc937005130 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Equipment/ball_basket3.png
+  importAddress: Guid(84c0634ed546c4dbdb98e5f1af6d51a4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Equipment/ball_basket3.png using Guid(84c0634ed546c4dbdb98e5f1af6d51a4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'd99bb0117ed8668d86f00d04dee1e93b') in 0.002579292 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=c75915dde1d084569feb70ff5f0ba2d0 DependenciesID=1595e528b62a07af4362db4fa6daee03 StaticDependenciesID=54f0d392e22cdfc79283042ee09ccf14 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Elements/element (66).png
+  importAddress: Guid(754b17952f2d24410a15b02b6c4418d9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Elements/element (66).png using Guid(754b17952f2d24410a15b02b6c4418d9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '6727b247b2e78c481c546b105ce74941') in 0.002898542 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=067ba2c1c8b89a60be3fd3aefccdb370 DependenciesID=5c39c8881bf465fde2408a9d1635512f StaticDependenciesID=00b693436016aa8e3258f3faebeca71d 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_206.asset
+  importAddress: Guid(eabb90c1b74c24f30b23121688055ee1) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_206.asset using Guid(eabb90c1b74c24f30b23121688055ee1) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '707f909536349f31b97841bccaa0b764') in 0.001634792 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=f2c1e67bcda998666da492efb189fd5c DependenciesID=31dc15282315c519e2563a443ac7b135 StaticDependenciesID=2cf3f082dce87134d2f1ff98cb4e68f3 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_54.asset
+  importAddress: Guid(833927e688fc34994bebaa566845fa0a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_54.asset using Guid(833927e688fc34994bebaa566845fa0a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'c0f105b953f9013f4d29ad54a28a03a5') in 0.001531334 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=4d7e33caa83eab5e8c8205205768aca5 DependenciesID=5bde325bc03f71ac667f0e1cb6dfb525 StaticDependenciesID=3cd8bdb8d0b76cb73bf4442d7654c7bd 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_182.asset
+  importAddress: Guid(8a32b203e8d7748c99d4209810fdd8b9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_182.asset using Guid(8a32b203e8d7748c99d4209810fdd8b9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '3366bf07f55d92e2c9787cf8be0652f7') in 0.001781542 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=0bd8a2df63effcb1f40813b761be4e2c DependenciesID=986223025843e0b925c877a1fd2293ff StaticDependenciesID=2617307160b91c898b5214964f519868 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_62.asset
+  importAddress: Guid(795461ee32cb34ac6b1eae1a0e1f2dbd) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_62.asset using Guid(795461ee32cb34ac6b1eae1a0e1f2dbd) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '50224c573318d627e59bbaccf82bc579') in 0.001710708 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=3f5b44b08f9d3d0fec7d6df5b718d92f DependenciesID=b8ff7f8e1ad0ac8e529bff376c6d2dba StaticDependenciesID=d2d5743a3ea170a7ce5ce058ec7d36b8 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Blue/characterBlue (5).png
+  importAddress: Guid(5542252fbd35e485c86f71a99eabfa61) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Blue/characterBlue (5).png using Guid(5542252fbd35e485c86f71a99eabfa61) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'ba81f1029c6e0628a1bb931d22a699b8') in 0.003658 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=902f468c153a96e9a54c6f5f125023a1 DependenciesID=96e9efb7bfa6c50034326e65b4717ce2 StaticDependenciesID=375a819336e7bb79e91ef7d006387c5b 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_83.asset
+  importAddress: Guid(1f007e63d08ee48919d667308f548f98) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_83.asset using Guid(1f007e63d08ee48919d667308f548f98) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '54783d62100c081ce2f8ce14d6ee2dfb') in 0.001769375 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=a0e71d559e8db3c7caa8959c4ca21691 DependenciesID=5638846a25f937e2b4212de736df413e StaticDependenciesID=e132fadd5f5c253958bf49b32c3ac0be 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Red/characterRed (13).png
+  importAddress: Guid(723539e838dbb4b02be67589596318c6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Red/characterRed (13).png using Guid(723539e838dbb4b02be67589596318c6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '1a1a05ab75e45b305eb5cb9ffc914063') in 0.002800375 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=77cd6ee3daaad4c35621201fbac21ce2 DependenciesID=511ec1b2318173d2a9fd8331eab46bbc StaticDependenciesID=a56cb0fb3d696a9db1e308d97703caf6 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Sprites/Palettes/Equipment/elements_39.asset
+  importAddress: Guid(b81738dbb797a46fc94bcab915cc4fca) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/Equipment/elements_39.asset using Guid(b81738dbb797a46fc94bcab915cc4fca) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'ba89379432ef1514d7df37b5348a3f08') in 0.001738583 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=f81f194b7f0088854f92780598c653e3 DependenciesID=1630a974f1765d0d72ddc3e594815691 StaticDependenciesID=c1a3f4aaa8fa462b6c367bb6207202f2 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Green/characterGreen (14).png
+  importAddress: Guid(4087b8fdc6e8a45d586efbb9853bb25c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Green/characterGreen (14).png using Guid(4087b8fdc6e8a45d586efbb9853bb25c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '88f9d7e0bc90584362db31633da296ee') in 0.002813875 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=abc45dc865b4f8b880ad0b00fdac1961 DependenciesID=874c075ae1841632fbbb0837dbd64fa3 StaticDependenciesID=30bb795517ef614ad1f9cb5204d7cbf3 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Elements/element (35).png
+  importAddress: Guid(1ae02d12341b8461a9b389182223b214) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Elements/element (35).png using Guid(1ae02d12341b8461a9b389182223b214) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'a6cebf9bccb39bc07d99c490d069f02f') in 0.003669084 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=bc09f95b1b8e8e197de673512b0ac257 DependenciesID=8eabc222589d6c6ac8f9e5a8dfeebcff StaticDependenciesID=67415ca3a4e19563a724e42f75b193ea 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000040 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Elements/element (41).png
+  importAddress: Guid(26398b6a5e51545c4949b2f5d0c3c9da) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Elements/element (41).png using Guid(26398b6a5e51545c4949b2f5d0c3c9da) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'a22c387d5b80c24219a8bd082daea387') in 0.002756291 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=49e5032a8088b3cdb50a70df9144ab05 DependenciesID=8cb57ada68f189fe4f2c1b7bf2b4ad4b StaticDependenciesID=0caaf1e044a00469021dc92860d94026 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_114.asset
+  importAddress: Guid(3b4bc59ce6f1243ad95d07f307082559) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_114.asset using Guid(3b4bc59ce6f1243ad95d07f307082559) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '54ee241a6cca68056b6290860b26af11') in 0.001616917 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=813c08b5af1d43964efe50eb25390ddd DependenciesID=01311b2ffbbb8e36772d67721d64e962 StaticDependenciesID=8581464ea0b27776efe5f2efffde46cb 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000058 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_128.asset
+  importAddress: Guid(740915429cbcc478c9a89139722db407) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_128.asset using Guid(740915429cbcc478c9a89139722db407) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'a23f897ea2cf15ef5eb3b3ce11dca245') in 0.001599167 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=9a1ce0a2f25d6aac13d0a2e6feda6d77 DependenciesID=2f79ba773ad0d1304d244b5021feb97d StaticDependenciesID=6c0093b035038e038c964e8363b0327a 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000049 seconds.
+  path: Assets/Sprites/Palettes/Equipment/elements_70.asset
+  importAddress: Guid(b52925bb8e8194df38946ea2e55850f0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/Equipment/elements_70.asset using Guid(b52925bb8e8194df38946ea2e55850f0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'f6691185828e54a56b42d33b4b18bda1') in 0.001701833 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=4b418d16ef3ac853bcf2de8240e8af28 DependenciesID=0ed2d1b87f52576c99e82f6fb1c3799d StaticDependenciesID=317af68667609f53c4548b579c191bf7 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000051 seconds.
+  path: Assets/Sprites/kenney_sportsPack/Vector/groundIce_red.swf
+  importAddress: Guid(2a36e8263e8d54e75af80fbc45914cac) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/Vector/groundIce_red.swf using Guid(2a36e8263e8d54e75af80fbc45914cac) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '3cfd2cd84eec26e3f4481f5a2800456c') in 0.001166875 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=cecba87a66fff7b1018f2903efa32aac DependenciesID=8fa04cedb025bbb334ad58ec0f76f19c StaticDependenciesID=6cee44e87d23bf994d72559b932eb099 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_82.asset
+  importAddress: Guid(6d317aa93bbdb40629b3008575fdd2a3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_82.asset using Guid(6d317aa93bbdb40629b3008575fdd2a3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'cf341c78f6e6fedd143c7f2987348abd') in 0.001866708 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=e28193e8608befe29c626112a7782532 DependenciesID=4cc0c6c8eb734bd6f995d72a4fdd5cb8 StaticDependenciesID=fc34b2c4b72542d740cafd1a01bc8657 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Sprites/Palettes/Equipment/elements_25.asset
+  importAddress: Guid(aeadd04f17cfd4106a2089671267f3dd) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/Equipment/elements_25.asset using Guid(aeadd04f17cfd4106a2089671267f3dd) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'b8bc130a713c1bfa455f2539c00dcb50') in 0.001585333 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=0a04014578407b97960789a31e5b66ec DependenciesID=c5268a59cd2a79f96df757d9c21a4c88 StaticDependenciesID=9dc2d14cb52aa768c20e44f796ccb456 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_96.asset
+  importAddress: Guid(a62ca786674f3410fbf1a8d94e03f79b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_96.asset using Guid(a62ca786674f3410fbf1a8d94e03f79b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '5c172e9bd2476ce83d7effbb33e83359') in 0.001946292 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=a83e082e83eaff97b23565eed679d922 DependenciesID=889889618c578172657f24d568c146c4 StaticDependenciesID=5e33f74579341cc911ccc525728b7895 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_131.asset
+  importAddress: Guid(355b516799e1144c89130ede82191608) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_131.asset using Guid(355b516799e1144c89130ede82191608) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'fdd34d69e68f8ada2fcb0883c6b44e2d') in 0.001610708 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=80d8c05371ac39792364234095090803 DependenciesID=0f84fbfa9b0f90fc81eb6d37018f041a StaticDependenciesID=d8d9665840221ad1f6dfa58c20350c60 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Sprites/kenney_sportsPack/Vector/groundTransparent_black.swf
+  importAddress: Guid(43734d7b1c8e64b729625ab7135e996e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/Vector/groundTransparent_black.swf using Guid(43734d7b1c8e64b729625ab7135e996e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'bd1f06eeeec58d8fc8616a042a39648d') in 0.00123475 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=79237dbfb825f6cbd6452abda7fa4ccd DependenciesID=3f17496c2de7b97da9b823dcd495ee21 StaticDependenciesID=0a56da6a43a51584499637efa1128299 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Sprites/Palettes/Equipment/elements_61.asset
+  importAddress: Guid(e38dd98738f4c4e2fbb0f6e44b5cffde) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/Equipment/elements_61.asset using Guid(e38dd98738f4c4e2fbb0f6e44b5cffde) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'de1f65df2259da1792650492d3cf65df') in 0.001536416 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=3ab1ec793492fa7ed67c54d634eb6431 DependenciesID=b27094a98247b4fdc118ae8bb63e0975 StaticDependenciesID=4aa6865664c68ddb017c69b3801cafc3 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Sprites/kenney_sportsPack/Tilesheet/groundTransparent_white.png
+  importAddress: Guid(6490dc48824cd49f6b53e340375a5f8a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/Tilesheet/groundTransparent_white.png using Guid(6490dc48824cd49f6b53e340375a5f8a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '3a415af3f910bb53ac3c1bb389cbaf03') in 0.003768584 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=8795b4072ecd8ae0b58a83750d761116 DependenciesID=6534bb4c58db1f4b4f6bc0848c9f8d75 StaticDependenciesID=a9797cbbc2b03f4ef81aede5b9907221 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_13.asset
+  importAddress: Guid(97a94cf559bcb433490aa3456b8f90b5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_13.asset using Guid(97a94cf559bcb433490aa3456b8f90b5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'f25d9ffdb5560ca6364bf5c25ec97573') in 0.0016015 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=345150281c43c65e0e197f2f16b15f1f DependenciesID=95843d54f177f0cb31392978095529a6 StaticDependenciesID=4e94e9b3485a583db9e617b89733aa65 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_159.asset
+  importAddress: Guid(cc1e1f1f9ddac41948afde723edf37f1) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_159.asset using Guid(cc1e1f1f9ddac41948afde723edf37f1) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '45d68da4858391bbeef68d35aaaf3c8a') in 0.001766875 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=1923667921a50cf617fd63aedab66513 DependenciesID=49ed7b17b8eab8cf57aa512100389b98 StaticDependenciesID=b8a27259fbe170c1fd164b4f0cfc4b50 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_201.asset
+  importAddress: Guid(3fc98ab22abb0411e80c2018e546b781) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_201.asset using Guid(3fc98ab22abb0411e80c2018e546b781) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '8d76894078ec74bf67a79fc31033d06a') in 0.001607584 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=2fc4f1afd6c0e88697b7788c90899533 DependenciesID=7d1b398cd7d157d10c67fb503ccf10d8 StaticDependenciesID=bd467b6d0d1da4920cdf41e754f088cf 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_23.asset
+  importAddress: Guid(0ab4d7be87dd648da86b1875ed72f9f0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_23.asset using Guid(0ab4d7be87dd648da86b1875ed72f9f0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'cd5b1e1550aa4fc33512b041ff1430cb') in 0.001610666 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=dcfd919dd2f0e7e9783220ab8fbcfcd6 DependenciesID=9793a64297879cede1435daabb2fc0eb StaticDependenciesID=c9eba8cd450b2cc4cd73509d0a3042c2 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_42.asset
+  importAddress: Guid(af628cf736d8247a3921af715e409431) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_42.asset using Guid(af628cf736d8247a3921af715e409431) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'bb41ad0779775246546c20bf1bcd8d98') in 0.001738042 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=6423d92e1436dfe91e85ed946de2b34e DependenciesID=caa886648c220027a284ace705af9803 StaticDependenciesID=519d96abefc319e5d0d33ca9712ad82b 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Elements/element (69).png
+  importAddress: Guid(22ef9c250922d48a191222a6771a507b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Elements/element (69).png using Guid(22ef9c250922d48a191222a6771a507b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '1d91b8912623450af765eeb9df8264ec') in 0.00289275 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=8fedad0ac99f921d20df28ae9af390ec DependenciesID=58fe44540eb95f9bb58d6119d39afe58 StaticDependenciesID=c9ee2f79f4b23f08e1a578ae243ada36 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Sprites/kenney_sportsPack/Vector/groundIce_blue.svg
+  importAddress: Guid(6c2e784c363154ffbaf67768ab9af3d8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/Vector/groundIce_blue.svg using Guid(6c2e784c363154ffbaf67768ab9af3d8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '9efde33e93e6eefcd5dc6909fd6f372b') in 0.002651 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=3a24e65417c7fdf94cc19289cdc837ed DependenciesID=060641e217e938ab5d686b9f4d759c08 StaticDependenciesID=3c9daf4641613a5c586ec4da0962acda 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_75.asset
+  importAddress: Guid(ae7bd9fe6af044ceab24a5039bc5cd76) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_75.asset using Guid(ae7bd9fe6af044ceab24a5039bc5cd76) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'c74cecd27c97c94b88bc205166ceefe8') in 0.002505917 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=5fa94a792dc18fe9a643db46c5e50816 DependenciesID=96d124c84394073e1b6043279870d666 StaticDependenciesID=091e31b7c69411dfe6564dfa159bec36 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Elements/element (24).png
+  importAddress: Guid(ef79c1c2652ea4b2db31f3baf53b79ab) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Elements/element (24).png using Guid(ef79c1c2652ea4b2db31f3baf53b79ab) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'b1ad0252acaa1022fda44187c8ce2511') in 0.002425416 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=3062c9ca3f68e8c07e5da60e6cc3ca7a DependenciesID=05479618790d5b2015c7c1600bfba3dc StaticDependenciesID=9af0f52adcaf6a7d1537168f7557cf3a 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Green/characterGreen (2).png
+  importAddress: Guid(9b3c4ea02dde74d1aafe5e36493d2e07) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Green/characterGreen (2).png using Guid(9b3c4ea02dde74d1aafe5e36493d2e07) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '85c54dfcd0c6e5b6ac7c74e3485f8125') in 0.002841708 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=66f874a2374663857dc3e53e8d403254 DependenciesID=37e30eafbd276b516cc135400bdddd7f StaticDependenciesID=3b59dd099f618a69fe78390b9631c6d7 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Sprites/EventMarkers/PassEventMarker.png
+  importAddress: Guid(0bd351a196c3b4958a21579e496904da) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/EventMarkers/PassEventMarker.png using Guid(0bd351a196c3b4958a21579e496904da) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'b937edf390b357fb211a89e602469938') in 0.002654708 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=0b4c79e833efd723302096308c5ee5b4 DependenciesID=3fdd52232d4235dc04957b2ad1ffe660 StaticDependenciesID=b9e5a8010db83bcc925b60fc153d7566 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Elements/element (59).png
+  importAddress: Guid(01f3189fc0a954206a5e6f246871e97f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Elements/element (59).png using Guid(01f3189fc0a954206a5e6f246871e97f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'a4bfe6ccfd30b530d318b4ea3c3c1de7') in 0.002679042 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=ff5e1b009ba4adf05bbc752b318795f2 DependenciesID=19727704b973bfc6e67771a4849a9998 StaticDependenciesID=c94b65ccad0655847c9ab2202d5198b2 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_102.asset
+  importAddress: Guid(1e20b670c228144feb751b86eb29f948) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_102.asset using Guid(1e20b670c228144feb751b86eb29f948) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '5191468cb4345ecbfaff62557262338f') in 0.001823417 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=3e79fe3524123812887971ba937992f8 DependenciesID=feeafd1bde9156d1af6a670b7d84bf0b StaticDependenciesID=72fe249eb9278b7eaa425ac14f07174c 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Blue/characterBlue (6).png
+  importAddress: Guid(5da753cb0b9dd4dffa3bb59648cd2a46) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Blue/characterBlue (6).png using Guid(5da753cb0b9dd4dffa3bb59648cd2a46) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'fdb0a713b42e7ec1e5bc92d9fd11baa9') in 0.003684291 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=7780b9a2e35be78a1cecb0fdbf58fac8 DependenciesID=c4bc393da0b05c81746305a16eb6b84c StaticDependenciesID=aaae7dde6b18b99f44b25d3ac2580674 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_44.asset
+  importAddress: Guid(505250442cf1e41a89a439892abe7ab9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_44.asset using Guid(505250442cf1e41a89a439892abe7ab9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'f95ca277f4e6d4ca1c2d0d26192773a0') in 0.001468417 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=6a5f844b7a25e8047a414eec9690fb25 DependenciesID=525ef5f8abfb8aae46928bb9ef2b89b1 StaticDependenciesID=ec757bab8c3a38f82931f7f31938ae4c 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Elements/element (54).png
+  importAddress: Guid(7e9775c400d61487db7b9467c2f5bbc8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Elements/element (54).png using Guid(7e9775c400d61487db7b9467c2f5bbc8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '7b0628ab9e356311db096e9c4972516e') in 0.002849625 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=199b05eb75d0d0a544130339f18ef562 DependenciesID=63b7685b817b21bb0566c68f544980cc StaticDependenciesID=0dc6b846159cb06bb4275e0cce420ae9 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Equipment/ball_volley2.png
+  importAddress: Guid(cebbae77f1c4c42ca8e15ffa284a83a1) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Equipment/ball_volley2.png using Guid(cebbae77f1c4c42ca8e15ffa284a83a1) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '06e8b4255143722bd8d19a8216958256') in 0.002807125 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=48ce53ad9d7241ef961f4ab3d633a9c8 DependenciesID=509f5ed79e8f9641c80b440e27779bf4 StaticDependenciesID=bb0afa3ecffe2bafb74cf7e8f03d444c 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_139.asset
+  importAddress: Guid(eb4ba7f971a8d4ce0afa10350b87b9ca) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_139.asset using Guid(eb4ba7f971a8d4ce0afa10350b87b9ca) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '8e0048195281034628c578aca8072891') in 0.001879875 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=5e1603e19c8ef61120f57d4cb711bdc9 DependenciesID=0204efc1c339171531c227ccdeb31310 StaticDependenciesID=01f01dd6778df657bc101ef398366ef8 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000047 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Elements/element (14).png
+  importAddress: Guid(7be92fe6a84774ef0b54ddaadf161449) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Elements/element (14).png using Guid(7be92fe6a84774ef0b54ddaadf161449) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '1a3c8ec1e777e852ad9ca91c6053f90a') in 0.002886042 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=26a9b25c3869cd0f629fb940828affac DependenciesID=bc069dc515c641e159e2c242bdffd79a StaticDependenciesID=9d60ac08451f0ecbc41bc60bdd30e4d3 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Sprites/kenney_sportsPack/Vector/groundGrass_mown_vector.swf
+  importAddress: Guid(8952f2bb5b23847079fd862ca76950ea) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/Vector/groundGrass_mown_vector.swf using Guid(8952f2bb5b23847079fd862ca76950ea) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '92fae33c907910e3697d4f99849979f8') in 0.001300125 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=bf247e62dab30bdf09302075441e6056 DependenciesID=aa8a39b129727b9c98cd62dec269b76a StaticDependenciesID=b16cdda4c4a741e22bc89f46575e608d 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000047 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_46.asset
+  importAddress: Guid(3ab4a2026edb843cf8109721453ee8ee) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_46.asset using Guid(3ab4a2026edb843cf8109721453ee8ee) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'c6fe0a44b3b464de90d83c9dda01adb8') in 0.002644041 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=63ba4c2f6f419d8dbb0af361e8286edf DependenciesID=8f9de3794668b5297c78aba1002d7c7a StaticDependenciesID=85e14b352549e33358178c25fa6cf3d1 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_197.asset
+  importAddress: Guid(3d8b0144cc91a403ca6ae1d269b77617) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_197.asset using Guid(3d8b0144cc91a403ca6ae1d269b77617) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '20c996f00694db5cac698c3018b6702d') in 0.001776375 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=b53097f25ca244ba22b4705e5ec3931c DependenciesID=46b8076bd59c3106b689033520e98cc0 StaticDependenciesID=b74123bacb196dda4ee92c0d55f46d1b 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_4.asset
+  importAddress: Guid(20df7c86948ac4b0daa79bc48f754ffb) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_4.asset using Guid(20df7c86948ac4b0daa79bc48f754ffb) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'e28bf3073a86ba53e6fda3ed70f51e9d') in 0.001760833 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=121ea6a41bd27b5dad35a37ad7309f2a DependenciesID=dd4afc1ed7e1c0f69a62ab52da23420c StaticDependenciesID=5bd4b9bcf867f9ac3b852bfb97da129f 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/ListOfPlayers.prefab
+  importAddress: Guid(7f999cfba25e94e48b1581f22f7d9237) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/ListOfPlayers.prefab using Guid(7f999cfba25e94e48b1581f22f7d9237) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '0836ca1c83b32f4a94011d44a88b2280') in 0.009849834 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=882c6e6d171827cea331cb903f35cd7b DependenciesID=3dd61f851d8e20bb33baaa9ebc6ad07a StaticDependenciesID=b128ebff0db74a57820431ac6d8570bd 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 89
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_121.asset
+  importAddress: Guid(96dabd155308c485582a00112d79a025) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_121.asset using Guid(96dabd155308c485582a00112d79a025) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '2cade4c270ebde6e06b5836b47ec505e') in 0.001652667 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=54791ee6ad94c6d2cc55e6429f09f49e DependenciesID=d04bc829256caa98fdd924b4bf30ba50 StaticDependenciesID=57824323c8f96bd66131f1332546b07e 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_78.asset
+  importAddress: Guid(e529ea5e5696148f38dfdc52db06079f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_78.asset using Guid(e529ea5e5696148f38dfdc52db06079f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'd9d9631ea7fee85ee59391221c901f46') in 0.001989 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=74cc5bec5a357d1cc7986a6f7b80340e DependenciesID=0b539f2554a931445191cba9e14f7aac StaticDependenciesID=1ebf0c3081089825d4c5c3ec14a71443 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_88.asset
+  importAddress: Guid(c9d8e369bf6764aa0b7466417dade508) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_88.asset using Guid(c9d8e369bf6764aa0b7466417dade508) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '580116472eb3029dd9d22384d014da02') in 0.001904041 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=95c3ea20af721ee08e8bd5af1053ac43 DependenciesID=9a711f3bbf96fa6e91a5e641e2c4ea37 StaticDependenciesID=f9d338340602a59bdd2d126fc584f344 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Elements/element (52).png
+  importAddress: Guid(bd8167b7d6f764acfa6853eddc9c8a06) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Elements/element (52).png using Guid(bd8167b7d6f764acfa6853eddc9c8a06) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '1bc3430ae5fdfa390d46f50c4b55ced3') in 0.00392025 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=dca127410f7bb238a840efc1705a801c DependenciesID=b26128425538b94a02f977299af6516a StaticDependenciesID=f9ae5249cac157112f54cf312f5fd9c1 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Equipment/flag_green.png
+  importAddress: Guid(b279e7acf37314dbba0f385f21306507) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Equipment/flag_green.png using Guid(b279e7acf37314dbba0f385f21306507) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '9e1735b524c9c6f3994f5e228986c1e7') in 0.002787708 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=3001791c53d83867a0e6dd7b2bab67bf DependenciesID=2acce79c74bc7a344910c5afdae7814a StaticDependenciesID=9881588503cc53c6c5266aeddf8002e7 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_74.asset
+  importAddress: Guid(4988ec258dca34476a29ca764449a9d1) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_74.asset using Guid(4988ec258dca34476a29ca764449a9d1) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '85ae2d63fa94994e7a4dc40cb6cbc99f') in 0.00169675 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=8b59a44e9af72520266a99e2b115d1d2 DependenciesID=c44b9356be18815103767f8c78482858 StaticDependenciesID=b00c06c027d0121efe72b5de4dd39549 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_126.asset
+  importAddress: Guid(132551a0661b042d19567cee7034f949) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_126.asset using Guid(132551a0661b042d19567cee7034f949) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '6cb0bb3368ea84e737fbee47209bf6ee') in 0.001737458 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=2a9c817bf2ec0bbf566c7e6b16957580 DependenciesID=15179afc6a87175f6d522fadb968562e StaticDependenciesID=0caf4e087fb759168bccaed354381bf5 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Elements/element (8).png
+  importAddress: Guid(9c03a87b020ba45e9ac4240487b8acf2) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Elements/element (8).png using Guid(9c03a87b020ba45e9ac4240487b8acf2) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'c3d9057f3dc279d0d08ce2fccc742962') in 0.002750666 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=2b319cb9f4a68b083a92d6113c39d630 DependenciesID=0710c66e8d0fb7a1676a0f181c13b9d8 StaticDependenciesID=1fadb0a6807f1f166dff450c7e2b0f40 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Sprites/Palettes/Equipment/elements_78.asset
+  importAddress: Guid(6d05689fddfbf46ea848bd9f273edbaa) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/Equipment/elements_78.asset using Guid(6d05689fddfbf46ea848bd9f273edbaa) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '3db94ab550771bc3fbad5355f7abf600') in 0.001553666 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=85b33f96ac9c727499cf784795665ed5 DependenciesID=2dfa5787b25fefc9fe94bd376111d4d2 StaticDependenciesID=2ea8dbdca8c380887047dd5a4577c677 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000046 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Elements/element (18).png
+  importAddress: Guid(ca8c1a5301fee47c49216e4f560c95fa) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Elements/element (18).png using Guid(ca8c1a5301fee47c49216e4f560c95fa) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '60f187cfb6fb4db072922be3f71c0446') in 0.003131459 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=1c7a916797fba5c11e26841569d9c493 DependenciesID=fb7c94f2d0283a4fb2f1c4242b8dc293 StaticDependenciesID=e00acb5f7633ff9a6d95f9535f9cd7ea 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/Sprites/Palettes/Equipment/elements_62.asset
+  importAddress: Guid(51d6d1317e428488286292863b1529ae) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/Equipment/elements_62.asset using Guid(51d6d1317e428488286292863b1529ae) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '804869395b91469ec7930aa0bfd3bb00') in 0.0017225 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=a8a287e40f8a82243f446d6082eb5243 DependenciesID=3969dbc3a7844a35db8e16049969ca40 StaticDependenciesID=e77d1d811cc9a444c197c3d8ff3a1b83 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Elements/element (71).png
+  importAddress: Guid(7ee99d13e179347568b0a1310758f1d9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Elements/element (71).png using Guid(7ee99d13e179347568b0a1310758f1d9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'b0263097f907cea6c97e1098a671af75') in 0.003786375 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=0ddba8f3fa9bd6ea7959512fafc6a14e DependenciesID=9fcf856b5c0ca9b934c2a110d9e06b93 StaticDependenciesID=c57e91e6bc860cb10f22b91c2d3deb0f 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_48.asset
+  importAddress: Guid(bf861d1d4e83344dabc12929003aec8f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_48.asset using Guid(bf861d1d4e83344dabc12929003aec8f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '8691f5c20ca22bacd2444130af3b60f7') in 0.001615375 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=477787454b320ab744dda1106d2f3b5e DependenciesID=576b7658f51db4c81f66a8460061f98a StaticDependenciesID=68d21f75ca2a9149a7667a1e2a65dc58 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_65.asset
+  importAddress: Guid(252741f4460c04e458c60fc5aff07d53) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_65.asset using Guid(252741f4460c04e458c60fc5aff07d53) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'c39bf0858916ce9a315b4a8b06d9307c') in 0.001850875 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=f9d24014a290b15efb47f50c47441dce DependenciesID=32a62268eaec720a99854ede5b4b334d StaticDependenciesID=56b6b95efc082abc7d7df65848362b89 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_142.asset
+  importAddress: Guid(c4685bff2874e47b6b3c4b44e6c45b33) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_142.asset using Guid(c4685bff2874e47b6b3c4b44e6c45b33) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '132cc17ab7be10b86667c688da0fafb5') in 0.00188975 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=572f02e081fbffefaee48f864420559f DependenciesID=3c0a586d77f01e11292d4cd4c7d0c2cd StaticDependenciesID=dbfd5c4606d5e4a30427275fdb4f3431 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Sprites/Palettes/Equipment/elements_75.asset
+  importAddress: Guid(1b32e113467aa488692ccf19049fcd9b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/Equipment/elements_75.asset using Guid(1b32e113467aa488692ccf19049fcd9b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '7945b0e9f2b4c805ec47627834e7659a') in 0.001673 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=58cc376940a5e39dc534938ce702798e DependenciesID=5dfc21eeeb71b24e034d266acb0d1aa5 StaticDependenciesID=002667382c356440ac545a7d187b5bbe 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Sprites/kenney_sportsPack/License.txt
+  importAddress: Guid(aa412f78f28b6400d96dc7fb6f739ee4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/License.txt using Guid(aa412f78f28b6400d96dc7fb6f739ee4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'f821347411eec4883f5c1ccc58f3f760') in 0.001146208 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=0be45fd7f805708cea5e2fab4b2fd291 DependenciesID=93bee19412bdaeeac7ebfe9ef4caab38 StaticDependenciesID=4871e224c97810849d8b1a6897ece7e6 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Elements/element (44).png
+  importAddress: Guid(374fb099e22f14fcea6e76d2dd858804) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Elements/element (44).png using Guid(374fb099e22f14fcea6e76d2dd858804) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'd5234cb48a1ab528134b9af951984624') in 0.002919333 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=648986a5c617fa15ca962b7980ef6485 DependenciesID=5f489efbad1907beda3b95fce7715e7f StaticDependenciesID=581a88a2841df358f240d2f6b9dd7e7b 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Elements/element (10).png
+  importAddress: Guid(0ab41806a83be45a2a6d3e627e187114) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Elements/element (10).png using Guid(0ab41806a83be45a2a6d3e627e187114) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '3d7fa313323a827de6229ef9a21b447b') in 0.002859 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=1095a8dc5c06aeff6fec2d1321dde6a1 DependenciesID=10bd7f31e907af8aa99f14eff74c7c95 StaticDependenciesID=9110cf38d11001a1719905483c9a480e 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Elements/element (29).png
+  importAddress: Guid(1c193392fc21b48f69a0d124bdfeed27) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Elements/element (29).png using Guid(1c193392fc21b48f69a0d124bdfeed27) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '60ec0764b74d0f2fe7404d8daf2c1721') in 0.003771042 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=ad4be4e4e9ddf32d017b6037618d6561 DependenciesID=2301c18667376d37c91dbcfc44498f76 StaticDependenciesID=7447474e1f8b723f6cbac5db1386abfb 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Special/characterSpecial (5).png
+  importAddress: Guid(02d860a8469db4816b1f6d0adfe3187e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Special/characterSpecial (5).png using Guid(02d860a8469db4816b1f6d0adfe3187e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '6f6310832de7b4f705d73bc720597495') in 0.003296792 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=b761e1565f748a2b4ffa7990b1449b9b DependenciesID=754cfbf985aa8050c78ee0ece49be128 StaticDependenciesID=ceb5a0d02b8e18c45e6df98d818af5fd 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_181.asset
+  importAddress: Guid(d742523330c3143e1a539b0fe16172f4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_181.asset using Guid(d742523330c3143e1a539b0fe16172f4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '0383fb51d73a714d3148de05cf231f02') in 0.001754125 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=c1d426bd2012a052e0b4b772f465bac4 DependenciesID=bcfe8688597807145df2d3c4f6affc25 StaticDependenciesID=ae42c1e6cec8a5b77dc5e68dd6732d5a 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Sprites/kenney_sportsPack/Spritesheet/sheet_characters.png
+  importAddress: Guid(008d8503367ba464abaccfffcee46097) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/Spritesheet/sheet_characters.png using Guid(008d8503367ba464abaccfffcee46097) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '790717077d11e5f5477afb2c2bde659c') in 0.002782375 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=c9ee9e7b3d899760363d4c40d1681f77 DependenciesID=d9ffe61e50dc914544c6509f91f09d97 StaticDependenciesID=c66e3fa71f6fdcd496586492c169e639 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_113.asset
+  importAddress: Guid(a66bb2db5dc2f498681c0f53795bb876) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_113.asset using Guid(a66bb2db5dc2f498681c0f53795bb876) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'f422d47625084cbe48496d47fcff33ea') in 0.001636875 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=1981dfb401d89a835618bef8438a64a9 DependenciesID=bd39df1329357233ca0080dcf82d5323 StaticDependenciesID=c2cb35b23d2f7a5517d09395884288a6 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Special/characterSpecial (11).png
+  importAddress: Guid(f6619c73bd4bd4001bceab4675e0cfd2) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Special/characterSpecial (11).png using Guid(f6619c73bd4bd4001bceab4675e0cfd2) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'd1ed318b7ea024ad06da8bf95d169c22') in 0.002898167 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=b2a5ae2a0d38be2dec7a3bee47ffeba2 DependenciesID=412cb1801237ef0e6cc16adb4445eca6 StaticDependenciesID=7df43a8d5bd79bde8e1fce576aaee7f6 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_180.asset
+  importAddress: Guid(df669a0f64350445cbb65da79d5c48c3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_180.asset using Guid(df669a0f64350445cbb65da79d5c48c3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '70e6001d4c96b4fafd92717e42e7384c') in 0.001811125 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=91740ea4ff327cd6bb8af8bd8962189b DependenciesID=28ca94e5fafb0cb07ece65f47790e0fe StaticDependenciesID=d0138a857eda0e764148a81db827da03 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_34.asset
+  importAddress: Guid(6ca74fd2118e14c0b956590c4b7d2fca) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_34.asset using Guid(6ca74fd2118e14c0b956590c4b7d2fca) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '57f104a07a2dce4c282a15667fcdfc44') in 0.001797416 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=fbdf19447e1dfaa7de93e641ec025a65 DependenciesID=1b1d9ee732f19af36cfbc4561fa4d7ea StaticDependenciesID=deb745867bd95962954db2b98e4d9a6c 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Sprites/Palettes/Equipment
+  importAddress: Guid(05e7835afe7ae45a1bdf386a4ec073cd) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/Equipment using Guid(05e7835afe7ae45a1bdf386a4ec073cd) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '6bd030a6fd93b7268547c799aba1b8c8') in 0.001353917 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=551325824475ad0140d9a0643e5aeae6 DependenciesID=6d185d87d16cd8af5d446760d4dcec15 StaticDependenciesID=900ddff21dc48703fb19ba906d169ddb 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Sprites/kenney_sportsPack/Tilesheet/groundBeige_blue.png
+  importAddress: Guid(4ea505834d0804a88b063753f88a6d22) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/Tilesheet/groundBeige_blue.png using Guid(4ea505834d0804a88b063753f88a6d22) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '5648306b9df9495866c0527cd412b2ff') in 0.003835083 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=10a13fd34df0724ba889425c06a6d6a3 DependenciesID=c0800b9284972b249d76a3b8ed5d93e0 StaticDependenciesID=ca19a3b19ca0490ff9c05e39733c8088 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_52.asset
+  importAddress: Guid(bfb0f4b98a3484e2c8f7770326f90f33) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_52.asset using Guid(bfb0f4b98a3484e2c8f7770326f90f33) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '471f1786eb4f48d14672b847eac5bff5') in 0.001424458 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=7054f27e61c452c8390ae1fe24e930fe DependenciesID=86bc5b4f2c5e0786cadb4b6aeede6f8c StaticDependenciesID=f6b748c65f5f5793aa32dd67e6c0e60d 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Sprites/kenney_sportsPack
+  importAddress: Guid(393ffed565452470eb4d78967957fba7) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack using Guid(393ffed565452470eb4d78967957fba7) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'aac9beb33aa1f1bfee8adc89426ba844') in 0.001421667 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=5fbcedec3175f639229e9a9a1a8bb497 DependenciesID=d579423e1544fa798388da303de8cfdf StaticDependenciesID=01788f0f5fd7e13e86823dda1f051c51 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000053 seconds.
+  path: Assets/Sprites/kenney_sportsPack/Vector/groundIce_blue.swf
+  importAddress: Guid(5a2774745dc7943ae962a2cd0125879e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/Vector/groundIce_blue.swf using Guid(5a2774745dc7943ae962a2cd0125879e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'd974f9142b43254106a601bd94f58e3e') in 0.0012585 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=3c9f0bb55198c4131f17808083b0d4a1 DependenciesID=ed319252caaa75c0133c69351b55a2c8 StaticDependenciesID=b5e89bf8f6887f847dca01373b032a25 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/White/characterWhite (1).png
+  importAddress: Guid(ed7a850e484fa41809b987a44b3080c8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/White/characterWhite (1).png using Guid(ed7a850e484fa41809b987a44b3080c8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '1e8d28d41caa45ac750483d8a7721fd5') in 0.002855958 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=8d89abda50d2c0db853d91caf8cb2685 DependenciesID=4e2df716a456d215161e5613823cfb8f StaticDependenciesID=6fb7a7223c4b351b8aaa21aaefe791a3 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000040 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Elements/element (21).png
+  importAddress: Guid(b6ce0bce22d4c4448bb91797e0575eb9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Elements/element (21).png using Guid(b6ce0bce22d4c4448bb91797e0575eb9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'e8d58bdc44f488d4e88ee0211397992d') in 0.002776625 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=52840eb1d1a29c1c3c8249418af8ed16 DependenciesID=a56e572e4675006bc3874b0095ebe3c1 StaticDependenciesID=8b5cb77ae413ac3ffa8d6ead4cc60c7c 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_45.asset
+  importAddress: Guid(ea74bafc7e15f42a4859db305615f626) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_45.asset using Guid(ea74bafc7e15f42a4859db305615f626) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '40bd708b084646e4b533a405d9b5632d') in 0.001539209 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=d0bcbed7b43df6e77ce4cccc174315e5 DependenciesID=18b07fcb957b01b1f5a60aa1834d682f StaticDependenciesID=f79ea23da51258828dfec9719c879ed7 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Red/characterRed (4).png
+  importAddress: Guid(a45b5548d5c024606a44e71debee82e2) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Red/characterRed (4).png using Guid(a45b5548d5c024606a44e71debee82e2) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'bcbea0f37e8902c782b555438a9b1604') in 0.002990375 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=323c9e97199cb2144f3e2bccb3663896 DependenciesID=15d5685fa0fb4c92b280e43d1adfb1f9 StaticDependenciesID=6789b9dc27e3e0163e1c90b84ff8a261 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Equipment/bat_wood.png
+  importAddress: Guid(869a7b50f6f124b079a9a9330f3c500b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Equipment/bat_wood.png using Guid(869a7b50f6f124b079a9a9330f3c500b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'b3802054336d2331bdc88511bcfcf5f5') in 0.003731166 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=e77857e7873e01c5ca4b80001105552c DependenciesID=d8e153f96c69a27835ef25b783a6ba64 StaticDependenciesID=03b7a63f7a81e89498341d73c91d7122 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_18.asset
+  importAddress: Guid(db59b62078f784005a34cdd500964f3c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_18.asset using Guid(db59b62078f784005a34cdd500964f3c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '639bb78edcb7dd23d9d08602184af991') in 0.001478459 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=4757ff6769587eedf5967460304923d0 DependenciesID=1ac700f5c1cdadaad4c781c422950952 StaticDependenciesID=4da1ecbfed1e02897f7666a5f4998c45 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Elements/element (70).png
+  importAddress: Guid(32252f87158cf4306807d1d14347b21d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Elements/element (70).png using Guid(32252f87158cf4306807d1d14347b21d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '13df68d63f86553013fc8beaeff34331') in 0.002769333 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=d2be9065934127cec7490d01d6830e99 DependenciesID=880d9e1d654cfc300a264df1f409d1a3 StaticDependenciesID=c64c19dd6d443134ba362a822d37b610 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_161.asset
+  importAddress: Guid(74f9531f97ac34c3b82ebf684244bd78) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_161.asset using Guid(74f9531f97ac34c3b82ebf684244bd78) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '476f4aef2026e5d37f4668871edb7d6c') in 0.001850042 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=8989a5ab5bfbc4e15046e83599651461 DependenciesID=409dd559c73bd03b4bbf7bea3e077da7 StaticDependenciesID=7addc7fb87932912b50c3be7260fa322 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_16.asset
+  importAddress: Guid(23206c352b24a4ab9b0f7cefbe3dcb41) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_16.asset using Guid(23206c352b24a4ab9b0f7cefbe3dcb41) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'fef74a450fec0b59de1b4a79f8093c86') in 0.001797292 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=5aecdf0b2a38bfe38234e8e9505767b3 DependenciesID=0ff9f317814f37f95d09304ac5130932 StaticDependenciesID=74862161e8836a82ef7145845626e83f 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_61.asset
+  importAddress: Guid(7acc4a1ed272747b8a14f58c3daf1866) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_61.asset using Guid(7acc4a1ed272747b8a14f58c3daf1866) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '13ac9c4083fec1cfbcc29c0f068e1788') in 0.0017725 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=99bf239b04745f3fc5ad8cb1d00955ed DependenciesID=922043bf0b45bcceaed4f0d559c0fb7c StaticDependenciesID=44c942e9c677363d7b34abab70d46010 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_150.asset
+  importAddress: Guid(eea1b78273a374987a447c2f06b44901) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_150.asset using Guid(eea1b78273a374987a447c2f06b44901) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '4540ccdbdef63173a3808f01fca4253a') in 0.002115709 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=1b0f5dd5c3e64fc2f225128dc03ca49f DependenciesID=34f66c760f7305eecb86d4354c3b459d StaticDependenciesID=55e4c0a702c7dd06422d7c49e82ccd91 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Sprites/Palettes/Equipment/elements_34.asset
+  importAddress: Guid(985c2eaddedf2445bbb9fb520ee49419) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/Equipment/elements_34.asset using Guid(985c2eaddedf2445bbb9fb520ee49419) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '5033b4d6554d14f1b219ce27f1bb2864') in 0.002365833 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=45c0587fa09925dedf79b4ab6d1c5853 DependenciesID=a53ddb9e93cb7094f463365e594b2f23 StaticDependenciesID=08a8611608d247d3ee2c531cb37e4b30 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Sprites/kenney_sportsPack/Vector/groundBeige_white.svg
+  importAddress: Guid(f5a8fbf4efe3f4c2fa5a7144d4ab1c29) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/Vector/groundBeige_white.svg using Guid(f5a8fbf4efe3f4c2fa5a7144d4ab1c29) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '94e34e8cb8b5e1c04ed554a4b8315da3') in 0.002608292 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=759a9d54dde9bdf9506095c0d48b14ff DependenciesID=c8718da982904ace123ee32abd7146f4 StaticDependenciesID=bc4f129e6726ee458a8f14d70a95e18b 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Sprites/Palettes/Equipment/elements_57.asset
+  importAddress: Guid(fc66af598041e4dcfb42fc5bd9a549e4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/Equipment/elements_57.asset using Guid(fc66af598041e4dcfb42fc5bd9a549e4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '5edc13713ccd201ef743553777897553') in 0.001659125 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=158f3b79c3b4e3512cb3741a395257f0 DependenciesID=a2f1f02a48f02196853cc28154619c82 StaticDependenciesID=b860f5277e8163e24ad25ea6525d284e 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_59.asset
+  importAddress: Guid(7912434e784fd4acba08834369434c0f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_59.asset using Guid(7912434e784fd4acba08834369434c0f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '45919c00a7dcb8741b843e7480e00fb6') in 0.002020708 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=f47612d0ed69eab72619b56c960e1063 DependenciesID=f0336d048fc720e40e6049dfd638dfac StaticDependenciesID=26ea67199fbf76ff4c219623ab15eebf 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000052 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_39.asset
+  importAddress: Guid(5ae90324ed1e347a4a1bf8e8b1e6e15c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_39.asset using Guid(5ae90324ed1e347a4a1bf8e8b1e6e15c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '63b22cf98769c61246ba78845c063952') in 0.001987167 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=a40073abdf8b11bd8ebac015ca52fa7e DependenciesID=e7dd6bdcff94cb07d375e6653eea972d StaticDependenciesID=1e4f56a2f4094ce61ae9fc7a12da583c 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000050 seconds.
+  path: Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_202.asset
+  importAddress: Guid(45fd60a21d1064b2ba8927a19767ee3a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/Palettes/PitchAndLines/groundGrass_mownWide_202.asset using Guid(45fd60a21d1064b2ba8927a19767ee3a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '82ab59ece76ec9f23746cc77dc3df97a') in 0.001964458 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=8c4985128e44f230e5a2bed0d801ea61 DependenciesID=11bdac5dc7e6859d5fa4a22cb45d366c StaticDependenciesID=3d6ffa49b9dc30b7bf0f0efa876a803a 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Sprites/kenney_sportsPack/PNG/Elements/element (62).png
+  importAddress: Guid(9dc754a642a2040d9b7497473dd655bb) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprites/kenney_sportsPack/PNG/Elements/element (62).png using Guid(9dc754a642a2040d9b7497473dd655bb) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '266f947ad0c880ffd98fe1d708927fbf') in 0.002936541 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=098b410025efe624a62046bbb589099d DependenciesID=0806457f61bc8ce774c558a30ddbfd15 StaticDependenciesID=2ad4027f3e8d042930086c3046336073 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
 
 ========================================================================
 Received Prepare
 Begin MonoManager ReloadAssembly
-Thread 0x17523f000 may have been prematurely finalized
+Thread 0x172dd3000 may have been prematurely finalized
 Assembly Assembly-CSharp-Editor-firstpass.dll at Library/ScriptAssemblies/Assembly-CSharp-Editor-firstpass.dll not valid. Loading of assembly skipped.
 Assembly Assembly-CSharp-Editor.dll at Library/ScriptAssemblies/Assembly-CSharp-Editor.dll not valid. Loading of assembly skipped.
 Assembly Assembly-CSharp-firstpass.dll at Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll not valid. Loading of assembly skipped.
@@ -289,25 +1633,25 @@ Native extension for WebGL target not found
 [Package Manager] Cannot connect to Unity Package Manager local server
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.335 seconds
-Domain Reload Profiling: 663ms
-	BeginReloadAssembly (82ms)
+- Finished resetting the current domain, in  0.363 seconds
+Domain Reload Profiling: 719ms
+	BeginReloadAssembly (85ms)
 		DisableScriptedObjects (6ms)
-		CreateAndSetChildDomain (18ms)
+		CreateAndSetChildDomain (20ms)
 	RebuildCommonClasses (19ms)
 	RebuildNativeTypeToScriptingClass (7ms)
-	initialDomainReloadingComplete (18ms)
-	LoadAllAssembliesAndSetupDomain (202ms)
-		LoadAssemblies (135ms)
-		AnalyzeDomain (89ms)
+	initialDomainReloadingComplete (21ms)
+	LoadAllAssembliesAndSetupDomain (223ms)
+		LoadAssemblies (156ms)
+		AnalyzeDomain (92ms)
 			TypeCache.Refresh (4ms)
-			BuildScriptInfoCaches (79ms)
+			BuildScriptInfoCaches (81ms)
 			ResolveRequiredComponents (5ms)
-	FinalizeReload (335ms)
+	FinalizeReload (363ms)
 		SetupLoadedEditorAssemblies (0ms)
-			BeforeProcessingInitializeOnLoad (74ms)
-			ProcessInitializeOnLoadAttributes (139ms)
-			ProcessInitializeOnLoadMethodAttributes (40ms)
+			BeforeProcessingInitializeOnLoad (72ms)
+			ProcessInitializeOnLoadAttributes (146ms)
+			ProcessInitializeOnLoadMethodAttributes (57ms)
 		AwakeInstancesAfterBackupRestoration (5ms)
 WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
 WARNING: Shader Did you use #pragma only_renderers and omit this platform?
@@ -315,16 +1659,15 @@ WARNING: Shader If subshaders removal was intentional, you may have forgotten tu
 Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
 Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
 Unloading 26 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 7018 unused Assets / (4.7 MB). Loaded Objects now: 7852.
-Memory consumption went from 178.3 MB to 173.6 MB.
-Total: 5.200625 ms (FindLiveObjects: 0.283500 ms CreateObjectMapping: 0.139917 ms MarkObjects: 3.828042 ms  DeleteObjects: 0.948917 ms)
+Unloading 7021 unused Assets / (5.1 MB). Loaded Objects now: 7858.
+Memory consumption went from 180.6 MB to 175.5 MB.
+Total: 5.414000 ms (FindLiveObjects: 0.296084 ms CreateObjectMapping: 0.132958 ms MarkObjects: 3.900500 ms  DeleteObjects: 1.084250 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 ========================================================================
 Received Prepare
 Begin MonoManager ReloadAssembly
-[Licensing::Client] Successfully resolved entitlement details
-Thread 0x16b7d7000 may have been prematurely finalized
+Thread 0x16f99f000 may have been prematurely finalized
 Assembly Assembly-CSharp-Editor-firstpass.dll at Library/ScriptAssemblies/Assembly-CSharp-Editor-firstpass.dll not valid. Loading of assembly skipped.
 Assembly Assembly-CSharp-Editor.dll at Library/ScriptAssemblies/Assembly-CSharp-Editor.dll not valid. Loading of assembly skipped.
 Assembly Assembly-CSharp-firstpass.dll at Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll not valid. Loading of assembly skipped.
@@ -372,25 +1715,25 @@ Native extension for WebGL target not found
 [Package Manager] Cannot connect to Unity Package Manager local server
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.344 seconds
-Domain Reload Profiling: 673ms
-	BeginReloadAssembly (80ms)
+- Finished resetting the current domain, in  0.358 seconds
+Domain Reload Profiling: 716ms
+	BeginReloadAssembly (84ms)
 		DisableScriptedObjects (6ms)
-		CreateAndSetChildDomain (18ms)
+		CreateAndSetChildDomain (20ms)
 	RebuildCommonClasses (19ms)
 	RebuildNativeTypeToScriptingClass (7ms)
-	initialDomainReloadingComplete (19ms)
-	LoadAllAssembliesAndSetupDomain (204ms)
-		LoadAssemblies (134ms)
-		AnalyzeDomain (92ms)
+	initialDomainReloadingComplete (20ms)
+	LoadAllAssembliesAndSetupDomain (226ms)
+		LoadAssemblies (153ms)
+		AnalyzeDomain (96ms)
 			TypeCache.Refresh (4ms)
-			BuildScriptInfoCaches (82ms)
+			BuildScriptInfoCaches (86ms)
 			ResolveRequiredComponents (5ms)
-	FinalizeReload (344ms)
+	FinalizeReload (359ms)
 		SetupLoadedEditorAssemblies (0ms)
-			BeforeProcessingInitializeOnLoad (73ms)
-			ProcessInitializeOnLoadAttributes (148ms)
-			ProcessInitializeOnLoadMethodAttributes (40ms)
+			BeforeProcessingInitializeOnLoad (76ms)
+			ProcessInitializeOnLoadAttributes (152ms)
+			ProcessInitializeOnLoadMethodAttributes (41ms)
 		AwakeInstancesAfterBackupRestoration (6ms)
 WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
 WARNING: Shader Did you use #pragma only_renderers and omit this platform?
@@ -398,16 +1741,8 @@ WARNING: Shader If subshaders removal was intentional, you may have forgotten tu
 Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
 Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
 Unloading 26 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 7018 unused Assets / (4.8 MB). Loaded Objects now: 7855.
-Memory consumption went from 181.8 MB to 177.0 MB.
-Total: 5.039042 ms (FindLiveObjects: 0.281708 ms CreateObjectMapping: 0.125542 ms MarkObjects: 3.653250 ms  DeleteObjects: 0.978334 ms)
+Unloading 7020 unused Assets / (4.8 MB). Loaded Objects now: 7861.
+Memory consumption went from 183.4 MB to 178.6 MB.
+Total: 5.310709 ms (FindLiveObjects: 0.288417 ms CreateObjectMapping: 0.128000 ms MarkObjects: 3.771709 ms  DeleteObjects: 1.122292 ms)
 
 Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 11779.517484 seconds.
-  path: Assets/Scenes/RugbyPitch.png
-  importAddress: Guid(f51c9e64def4d43a19822bebdec500fa) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Scenes/RugbyPitch.png using Guid(f51c9e64def4d43a19822bebdec500fa) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '7ef57fb655ea895a32f51e56c7ed49bc') in 0.052481208 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=ef7fd39dc725c75e28569eaeb1779e82 DependenciesID=c1a7604e7ce31ecf7d194a6113f9d9f9 StaticDependenciesID=5b94a4cf90d1dba4762c7852573bccb2 
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
