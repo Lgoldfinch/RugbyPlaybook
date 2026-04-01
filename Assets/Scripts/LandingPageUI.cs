@@ -52,7 +52,7 @@ public class LandingPageUI : MonoBehaviour
 
     void EnsureEventSystem()
     {
-        if (FindFirstObjectByType<EventSystem>() != null)
+        if (FindAnyObjectByType<EventSystem>() != null)
             return;
         var es = new GameObject("EventSystem");
         es.AddComponent<EventSystem>();
