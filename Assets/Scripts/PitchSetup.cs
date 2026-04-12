@@ -29,6 +29,8 @@ public class PitchSetup : MonoBehaviour
 
     public PitchInteractionMode InteractionMode => _interactionMode;
 
+    public bool EraseModeActive => _eraseModeActive;
+
     Font _font;
     RectTransform _pitchHudArea;
     RectTransform _dragLayer;
@@ -44,6 +46,9 @@ public class PitchSetup : MonoBehaviour
     Text _interactionModeButtonLabel;
     Button _playButton;
     Coroutine _playRoutine;
+    bool _eraseModeActive;
+    Button _eraseButton;
+    Text _eraseButtonLabel;
 
     void Awake()
     {
@@ -264,13 +269,43 @@ public class PitchSetup : MonoBehaviour
         _interactionModeButtonLabel.raycastTarget = false;
         RefreshInteractionModeButtonLabel();
 
+        var eraseBtnGo = new GameObject("EraseButton");
+        eraseBtnGo.transform.SetParent(modeStripGo.transform, false);
+        var eraseBtnRt = eraseBtnGo.AddComponent<RectTransform>();
+        eraseBtnRt.anchorMin = new Vector2(0f, 0f);
+        eraseBtnRt.anchorMax = new Vector2(1f, 0f);
+        eraseBtnRt.pivot = new Vector2(0.5f, 0f);
+        eraseBtnRt.anchoredPosition = new Vector2(0f, 12f);
+        eraseBtnRt.sizeDelta = new Vector2(-16f, 52f);
+        var eraseImg = eraseBtnGo.AddComponent<Image>();
+        eraseImg.color = new Color(0.28f, 0.3f, 0.36f, 0.95f);
+        _eraseButton = eraseBtnGo.AddComponent<Button>();
+        _eraseButton.targetGraphic = eraseImg;
+        _eraseButton.onClick.AddListener(OnEraseToggle);
+        var eraseTextGo = new GameObject("Text");
+        eraseTextGo.transform.SetParent(eraseBtnGo.transform, false);
+        var eraseTextRt = eraseTextGo.AddComponent<RectTransform>();
+        eraseTextRt.anchorMin = Vector2.zero;
+        eraseTextRt.anchorMax = Vector2.one;
+        eraseTextRt.offsetMin = Vector2.zero;
+        eraseTextRt.offsetMax = Vector2.zero;
+        _eraseButtonLabel = eraseTextGo.AddComponent<Text>();
+        _eraseButtonLabel.font = _font;
+        _eraseButtonLabel.fontSize = 20;
+        _eraseButtonLabel.color = new Color(0.95f, 0.95f, 0.95f, 1f);
+        _eraseButtonLabel.alignment = TextAnchor.MiddleCenter;
+        _eraseButtonLabel.horizontalOverflow = HorizontalWrapMode.Wrap;
+        _eraseButtonLabel.verticalOverflow = VerticalWrapMode.Truncate;
+        _eraseButtonLabel.raycastTarget = false;
+        RefreshEraseButtonVisual();
+
         var playBtnGo = new GameObject("PlayButton");
         playBtnGo.transform.SetParent(modeStripGo.transform, false);
         var playBtnRt = playBtnGo.AddComponent<RectTransform>();
         playBtnRt.anchorMin = new Vector2(0f, 0f);
         playBtnRt.anchorMax = new Vector2(1f, 0f);
         playBtnRt.pivot = new Vector2(0.5f, 0f);
-        playBtnRt.anchoredPosition = new Vector2(0f, 12f);
+        playBtnRt.anchoredPosition = new Vector2(0f, 12f + 52f + 8f);
         playBtnRt.sizeDelta = new Vector2(-16f, 52f);
         var playImg = playBtnGo.AddComponent<Image>();
         playImg.color = new Color(0.28f, 0.3f, 0.36f, 0.95f);
@@ -437,6 +472,9 @@ public class PitchSetup : MonoBehaviour
 
     public void OnTrayBeginDrag(int playerNumber, PointerEventData eventData)
     {
+        if (_eraseModeActive)
+            return;
+
         if (_interactionMode != PitchInteractionMode.DragPlayers)
             return;
 
@@ -449,6 +487,9 @@ public class PitchSetup : MonoBehaviour
 
     public void OnTrayDrag(PointerEventData eventData)
     {
+        if (_eraseModeActive)
+            return;
+
         if (_interactionMode != PitchInteractionMode.DragPlayers)
             return;
 
@@ -460,6 +501,9 @@ public class PitchSetup : MonoBehaviour
         if (_dragPreview != null)
             Destroy(_dragPreview.gameObject);
         _dragPreview = null;
+
+        if (_eraseModeActive)
+            return;
 
         if (_interactionMode != PitchInteractionMode.DragPlayers)
             return;
@@ -512,6 +556,9 @@ public class PitchSetup : MonoBehaviour
         var lineDrawer = chip.gameObject.AddComponent<PlacedPlayerLineDrawer>();
         lineDrawer.Init(this, chip, playerNumber);
 
+        var eraseTap = chip.gameObject.AddComponent<PitchChipEraseTap>();
+        eraseTap.Init(this, playerNumber);
+
         _placedPlayers[playerNumber] = chip;
         SetTraySlotForPlayerOnPitch(playerNumber, true);
     }
@@ -542,6 +589,9 @@ public class PitchSetup : MonoBehaviour
     public void OnPlacedChipDrag(RectTransform chip, PointerEventData eventData)
     {
         if (chip == null || _pitchHudArea == null)
+            return;
+
+        if (_eraseModeActive)
             return;
 
         if (_interactionMode != PitchInteractionMode.DragPlayers)
@@ -607,6 +657,7 @@ public class PitchSetup : MonoBehaviour
 
     void CycleInteractionMode()
     {
+        ClearEraseMode();
         _activeLineDrawer?.CancelRubberBand();
         var modes = System.Enum.GetValues(typeof(PitchInteractionMode));
         _interactionMode = (PitchInteractionMode)(((int)_interactionMode + 1) % modes.Length);
@@ -649,6 +700,8 @@ public class PitchSetup : MonoBehaviour
 
         if (_playButton != null)
             _playButton.interactable = true;
+
+        ClearEraseMode();
 
         foreach (var line in _playerLines.Values)
         {
@@ -705,7 +758,7 @@ public class PitchSetup : MonoBehaviour
         return rt;
     }
 
-    internal void RebuildPlayerPolyline(RectTransform lineRoot, IReadOnlyList<Vector2> anchors, Vector2 trailEnd, bool drawTrail)
+    internal void RebuildPlayerPolyline(RectTransform lineRoot, IReadOnlyList<Vector2> anchors, Vector2 trailEnd, bool drawTrail, int lineOwnerPlayerNumber)
     {
         if (lineRoot == null)
             return;
@@ -717,17 +770,17 @@ public class PitchSetup : MonoBehaviour
             return;
 
         for (int i = 0; i < anchors.Count - 1; i++)
-            AddLineSegmentChild(lineRoot, anchors[i], anchors[i + 1]);
+            AddLineSegmentChild(lineRoot, anchors[i], anchors[i + 1], lineOwnerPlayerNumber);
 
         if (drawTrail && anchors.Count > 0)
         {
             var from = anchors[anchors.Count - 1];
             if ((trailEnd - from).sqrMagnitude > 0.0001f)
-                AddLineSegmentChild(lineRoot, from, trailEnd);
+                AddLineSegmentChild(lineRoot, from, trailEnd, lineOwnerPlayerNumber);
         }
     }
 
-    void AddLineSegmentChild(Transform parent, Vector2 startLocal, Vector2 endLocal)
+    void AddLineSegmentChild(Transform parent, Vector2 startLocal, Vector2 endLocal, int lineOwnerPlayerNumber)
     {
         var go = new GameObject("Segment");
         go.transform.SetParent(parent, false);
@@ -737,8 +790,12 @@ public class PitchSetup : MonoBehaviour
         rt.pivot = new Vector2(0f, 0.5f);
         var img = go.AddComponent<Image>();
         img.color = Color.black;
-        img.raycastTarget = false;
+        img.raycastTarget = _eraseModeActive;
+        // Thin visuals stay 2px tall; padding widens hit-testing without changing layout bounds.
+        img.raycastPadding = new Vector4(0f, 14f, 0f, 14f);
         LayoutLineSegment(rt, startLocal, endLocal);
+        var segTap = go.AddComponent<PitchLineSegmentEraseTap>();
+        segTap.Init(this, lineOwnerPlayerNumber);
     }
 
     internal void LayoutLineSegment(RectTransform lineRt, Vector2 startLocal, Vector2 endLocal)
@@ -785,12 +842,99 @@ public class PitchSetup : MonoBehaviour
 
         if (pathPoints != null && pathPoints.Count >= 2)
             _playerLinePaths[playerNumber] = new List<Vector2>(pathPoints);
+
+        SetLineSegmentsRaycastForErase(_eraseModeActive);
+    }
+
+    void OnEraseToggle()
+    {
+        _eraseModeActive = !_eraseModeActive;
+        RefreshEraseButtonVisual();
+        SetLineSegmentsRaycastForErase(_eraseModeActive);
+        RefreshLinesRootSiblingOrder();
+    }
+
+    void ClearEraseMode()
+    {
+        if (!_eraseModeActive)
+            return;
+
+        _eraseModeActive = false;
+        RefreshEraseButtonVisual();
+        SetLineSegmentsRaycastForErase(false);
+        RefreshLinesRootSiblingOrder();
+    }
+
+    void RefreshLinesRootSiblingOrder()
+    {
+        if (_linesRoot == null)
+            return;
+
+        if (_eraseModeActive)
+            _linesRoot.SetAsLastSibling();
+        else
+            _linesRoot.SetAsFirstSibling();
+    }
+
+    void RefreshEraseButtonVisual()
+    {
+        if (_eraseButtonLabel != null)
+            _eraseButtonLabel.text = _eraseModeActive ? "Erase on" : "Erase";
+
+        if (_eraseButton != null)
+        {
+            var img = _eraseButton.GetComponent<Image>();
+            if (img != null)
+                img.color = _eraseModeActive
+                    ? new Color(0.38f, 0.42f, 0.55f, 0.98f)
+                    : new Color(0.28f, 0.3f, 0.36f, 0.95f);
+        }
+    }
+
+    void SetLineSegmentsRaycastForErase(bool raycast)
+    {
+        foreach (var lineRoot in _playerLines.Values)
+        {
+            if (lineRoot == null)
+                continue;
+
+            for (var i = 0; i < lineRoot.childCount; i++)
+            {
+                var img = lineRoot.GetChild(i).GetComponent<Image>();
+                if (img != null)
+                    img.raycastTarget = raycast;
+            }
+        }
+    }
+
+    public void TryDeletePlacedPlayer(int playerNumber)
+    {
+        if (!_eraseModeActive)
+            return;
+
+        if (!_placedPlayers.TryGetValue(playerNumber, out var chip) || chip == null)
+            return;
+
+        Destroy(chip.gameObject);
+        _placedPlayers.Remove(playerNumber);
+        RemoveCommittedLineForPlayer(playerNumber);
+        SetTraySlotForPlayerOnPitch(playerNumber, false);
+    }
+
+    public void TryDeleteLineOnly(int playerNumber)
+    {
+        if (!_eraseModeActive)
+            return;
+
+        RemoveCommittedLineForPlayer(playerNumber);
     }
 
     void OnPlayPressed()
     {
         if (_playRoutine != null)
             return;
+
+        ClearEraseMode();
 
         _playRoutine = StartCoroutine(RunPlayAnimations());
     }

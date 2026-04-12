@@ -22,7 +22,7 @@ public class PlacedPlayerLineDrawer : MonoBehaviour, IBeginDragHandler, IDragHan
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (_pitch == null || _chip == null || _pitch.InteractionMode != PitchInteractionMode.DrawLines)
+        if (_pitch == null || _chip == null || _pitch.EraseModeActive || _pitch.InteractionMode != PitchInteractionMode.DrawLines)
             return;
 
         _pitch.SetActiveLineDrawer(this);
@@ -38,17 +38,17 @@ public class PlacedPlayerLineDrawer : MonoBehaviour, IBeginDragHandler, IDragHan
         _path.Add(_chip.anchoredPosition);
 
         var end = _pitch.ScreenPointToClampedPitchLocal(eventData.position);
-        _pitch.RebuildPlayerPolyline(_lineRoot, _path, end, drawTrail: true);
+        _pitch.RebuildPlayerPolyline(_lineRoot, _path, end, drawTrail: true, _playerNumber);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (_lineRoot == null || _chip == null || _pitch == null || _pitch.InteractionMode != PitchInteractionMode.DrawLines)
+        if (_lineRoot == null || _chip == null || _pitch == null || _pitch.EraseModeActive || _pitch.InteractionMode != PitchInteractionMode.DrawLines)
             return;
 
         var end = _pitch.ScreenPointToClampedPitchLocal(eventData.position);
         AppendCornerIfNeeded(end);
-        _pitch.RebuildPlayerPolyline(_lineRoot, _path, end, drawTrail: true);
+        _pitch.RebuildPlayerPolyline(_lineRoot, _path, end, drawTrail: true, _playerNumber);
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -60,6 +60,14 @@ public class PlacedPlayerLineDrawer : MonoBehaviour, IBeginDragHandler, IDragHan
 
         if (_lineRoot == null)
             return;
+
+        if (_pitch.EraseModeActive)
+        {
+            Destroy(_lineRoot.gameObject);
+            _lineRoot = null;
+            _path.Clear();
+            return;
+        }
 
         if (_pitch.InteractionMode != PitchInteractionMode.DrawLines)
         {
@@ -74,7 +82,7 @@ public class PlacedPlayerLineDrawer : MonoBehaviour, IBeginDragHandler, IDragHan
         if (_path.Count > 0 && (_path[_path.Count - 1] - end).sqrMagnitude > 0.0001f)
             _path.Add(end);
 
-        _pitch.RebuildPlayerPolyline(_lineRoot, _path, end, drawTrail: false);
+        _pitch.RebuildPlayerPolyline(_lineRoot, _path, end, drawTrail: false, _playerNumber);
 
         if (ComputePolylineLength() < MinCommitLength)
         {
