@@ -30,6 +30,7 @@ public class PitchSetup : MonoBehaviour
     Font _font;
     RectTransform _pitchHudArea;
     RectTransform _dragLayer;
+    readonly Dictionary<int, GameObject> _trayItems = new();
     readonly Dictionary<int, RectTransform> _placedPlayers = new();
     readonly Dictionary<int, RectTransform> _playerLines = new();
     RectTransform _linesRoot;
@@ -377,6 +378,13 @@ public class PitchSetup : MonoBehaviour
         var drag = go.AddComponent<PlayerTrayDragItem>();
         drag.Init(this, playerNumber);
 
+        var trayGroup = go.AddComponent<CanvasGroup>();
+        trayGroup.alpha = 1f;
+        trayGroup.interactable = true;
+        trayGroup.blocksRaycasts = true;
+
+        _trayItems[playerNumber] = go;
+
         var labelGo = new GameObject("Text");
         labelGo.transform.SetParent(go.transform, false);
         var labelRt = labelGo.AddComponent<RectTransform>();
@@ -454,6 +462,7 @@ public class PitchSetup : MonoBehaviour
             existing.anchorMin = new Vector2(0.5f, 0.5f);
             existing.anchorMax = new Vector2(0.5f, 0.5f);
             existing.anchoredPosition = localPoint;
+            SetTraySlotForPlayerOnPitch(playerNumber, true);
             return;
         }
 
@@ -470,6 +479,30 @@ public class PitchSetup : MonoBehaviour
         lineDrawer.Init(this, chip, playerNumber);
 
         _placedPlayers[playerNumber] = chip;
+        SetTraySlotForPlayerOnPitch(playerNumber, true);
+    }
+
+    void SetTraySlotForPlayerOnPitch(int playerNumber, bool onPitch)
+    {
+        if (!_trayItems.TryGetValue(playerNumber, out var trayGo) || trayGo == null)
+            return;
+
+        var cg = trayGo.GetComponent<CanvasGroup>();
+        if (cg == null)
+            return;
+
+        if (onPitch)
+        {
+            cg.alpha = 0f;
+            cg.interactable = false;
+            cg.blocksRaycasts = false;
+        }
+        else
+        {
+            cg.alpha = 1f;
+            cg.interactable = true;
+            cg.blocksRaycasts = true;
+        }
     }
 
     public void OnPlacedChipDrag(RectTransform chip, PointerEventData eventData)
@@ -589,6 +622,9 @@ public class PitchSetup : MonoBehaviour
         }
 
         _placedPlayers.Clear();
+
+        for (var n = 1; n <= PlayerCount; n++)
+            SetTraySlotForPlayerOnPitch(n, false);
     }
 
     internal void SetActiveLineDrawer(PlacedPlayerLineDrawer drawer)
