@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -21,6 +22,7 @@ public class PitchSetup : MonoBehaviour
     const float PlayMoveSpeed = 320f;
     static readonly Vector2 PlayerChipSize = new Vector2(58, 58);
     static readonly Color PlayerChipColor = new Color(0.14f, 0.32f, 0.62f, 1f);
+    static readonly Color DefendingPlayerChipColor = new Color(0.62f, 0.16f, 0.16f, 1f);
 
     [SerializeField] GameObject rugbyPitchPrefab;
     [SerializeField] string homeSceneName = "HomePage";
@@ -36,6 +38,7 @@ public class PitchSetup : MonoBehaviour
     RectTransform _dragLayer;
     readonly Dictionary<int, GameObject> _trayItems = new();
     readonly Dictionary<int, RectTransform> _placedPlayers = new();
+    readonly Dictionary<int, Vector2> _playerStartPitchLocal = new();
     readonly Dictionary<int, RectTransform> _playerLines = new();
     readonly Dictionary<int, List<Vector2>> _playerLinePaths = new();
     RectTransform _linesRoot;
@@ -49,6 +52,14 @@ public class PitchSetup : MonoBehaviour
     bool _eraseModeActive;
     Button _eraseButton;
     Text _eraseButtonLabel;
+
+    const int MaxUndoDepth = 50;
+    readonly List<PitchEditorSnapshot> _undo = new();
+    readonly List<PitchEditorSnapshot> _redo = new();
+    Button _undoButton;
+    Button _redoButton;
+
+    RectTransform _activePlacedChipDrag;
 
     void Awake()
     {
@@ -98,40 +109,8 @@ public class PitchSetup : MonoBehaviour
         root.offsetMin = Vector2.zero;
         root.offsetMax = Vector2.zero;
 
-        var trayBox = new GameObject("PlayerTrayBox");
-        trayBox.transform.SetParent(canvasGo.transform, false);
-        var trayBoxRt = trayBox.AddComponent<RectTransform>();
-        trayBoxRt.anchorMin = new Vector2(0, 1);
-        trayBoxRt.anchorMax = new Vector2(0, 1);
-        trayBoxRt.pivot = new Vector2(0, 1);
-        trayBoxRt.anchoredPosition = new Vector2(24, -112);
-        var trayBg = trayBox.AddComponent<Image>();
-        trayBg.color = new Color(0.1f, 0.11f, 0.14f, 0.88f);
-
-        var trayContent = new GameObject("TrayContent");
-        trayContent.transform.SetParent(trayBox.transform, false);
-        var trayContentRt = trayContent.AddComponent<RectTransform>();
-        trayContentRt.anchorMin = Vector2.zero;
-        trayContentRt.anchorMax = Vector2.one;
-        trayContentRt.offsetMin = new Vector2(10, 10);
-        trayContentRt.offsetMax = new Vector2(-10, -10);
-        var trayGrid = trayContent.AddComponent<GridLayoutGroup>();
-        trayGrid.cellSize = new Vector2(58, 58);
-        trayGrid.spacing = new Vector2(8, 8);
-        trayGrid.padding = new RectOffset(6, 6, 6, 6);
-        trayGrid.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
-        trayGrid.constraintCount = 3;
-        trayGrid.startCorner = GridLayoutGroup.Corner.UpperLeft;
-        trayGrid.startAxis = GridLayoutGroup.Axis.Horizontal;
-        trayGrid.childAlignment = TextAnchor.UpperCenter;
-
-        const float trayContentMargin = 20f;
-        int trayRows = (PlayerCount + trayGrid.constraintCount - 1) / trayGrid.constraintCount;
-        float gridHeight = trayGrid.padding.vertical + trayRows * trayGrid.cellSize.y
-            + Mathf.Max(0, trayRows - 1) * trayGrid.spacing.y;
-        float gridWidth = trayGrid.padding.horizontal + trayGrid.constraintCount * trayGrid.cellSize.x
-            + Mathf.Max(0, trayGrid.constraintCount - 1) * trayGrid.spacing.x;
-        trayBoxRt.sizeDelta = new Vector2(gridWidth + trayContentMargin, gridHeight + trayContentMargin);
+        var attackTray = AddSideTray(canvasGo.transform, "Attacking", PlayerChipColor, 0, -112f);
+        var defendTray = AddSideTray(canvasGo.transform, "Defending", DefendingPlayerChipColor, PlayerCount, attackTray.nextStackTopY);
 
         var rightArea = new GameObject("PitchHudArea");
         rightArea.transform.SetParent(canvasGo.transform, false);
@@ -190,20 +169,74 @@ public class PitchSetup : MonoBehaviour
         text.text = "Back";
         text.raycastTarget = false;
 
-        for (int number = 1; number <= PlayerCount; number++)
-        {
-            CreatePlayerTrayButton(trayContent.transform, number);
-        }
+        const float undoRedoTopY = -24f;
+        const float undoRedoHeight = 72f;
+        var undoBtnGo = new GameObject("UndoButton");
+        undoBtnGo.transform.SetParent(canvasGo.transform, false);
+        var undoRt = undoBtnGo.AddComponent<RectTransform>();
+        undoRt.anchorMin = new Vector2(0, 1);
+        undoRt.anchorMax = new Vector2(0, 1);
+        undoRt.pivot = new Vector2(0, 1);
+        undoRt.anchoredPosition = new Vector2(24f + 200f + 12f, undoRedoTopY);
+        undoRt.sizeDelta = new Vector2(96, undoRedoHeight);
+        var undoImg = undoBtnGo.AddComponent<Image>();
+        undoImg.color = new Color(0.28f, 0.3f, 0.36f, 0.95f);
+        _undoButton = undoBtnGo.AddComponent<Button>();
+        _undoButton.targetGraphic = undoImg;
+        _undoButton.onClick.AddListener(PerformUndo);
+        var undoTextGo = new GameObject("Text");
+        undoTextGo.transform.SetParent(undoBtnGo.transform, false);
+        var undoTextRt = undoTextGo.AddComponent<RectTransform>();
+        undoTextRt.anchorMin = Vector2.zero;
+        undoTextRt.anchorMax = Vector2.one;
+        undoTextRt.offsetMin = Vector2.zero;
+        undoTextRt.offsetMax = Vector2.zero;
+        var undoText = undoTextGo.AddComponent<Text>();
+        undoText.font = _font;
+        undoText.fontSize = 22;
+        undoText.color = new Color(0.95f, 0.95f, 0.95f, 1f);
+        undoText.alignment = TextAnchor.MiddleCenter;
+        undoText.text = "Undo";
+        undoText.raycastTarget = false;
 
-        const float resetGapBelowTray = 12f;
+        var redoBtnGo = new GameObject("RedoButton");
+        redoBtnGo.transform.SetParent(canvasGo.transform, false);
+        var redoRt = redoBtnGo.AddComponent<RectTransform>();
+        redoRt.anchorMin = new Vector2(0, 1);
+        redoRt.anchorMax = new Vector2(0, 1);
+        redoRt.pivot = new Vector2(0, 1);
+        redoRt.anchoredPosition = new Vector2(24f + 200f + 12f + 96f + 12f, undoRedoTopY);
+        redoRt.sizeDelta = new Vector2(96, undoRedoHeight);
+        var redoImg = redoBtnGo.AddComponent<Image>();
+        redoImg.color = new Color(0.28f, 0.3f, 0.36f, 0.95f);
+        _redoButton = redoBtnGo.AddComponent<Button>();
+        _redoButton.targetGraphic = redoImg;
+        _redoButton.onClick.AddListener(PerformRedo);
+        var redoTextGo = new GameObject("Text");
+        redoTextGo.transform.SetParent(redoBtnGo.transform, false);
+        var redoTextRt = redoTextGo.AddComponent<RectTransform>();
+        redoTextRt.anchorMin = Vector2.zero;
+        redoTextRt.anchorMax = Vector2.one;
+        redoTextRt.offsetMin = Vector2.zero;
+        redoTextRt.offsetMax = Vector2.zero;
+        var redoText = redoTextGo.AddComponent<Text>();
+        redoText.font = _font;
+        redoText.fontSize = 22;
+        redoText.color = new Color(0.95f, 0.95f, 0.95f, 1f);
+        redoText.alignment = TextAnchor.MiddleCenter;
+        redoText.text = "Redo";
+        redoText.raycastTarget = false;
+
+        RefreshUndoRedoButtons();
+
         var resetBtnGo = new GameObject("ResetPlayersButton");
         resetBtnGo.transform.SetParent(canvasGo.transform, false);
         var resetRt = resetBtnGo.AddComponent<RectTransform>();
         resetRt.anchorMin = new Vector2(0, 1);
         resetRt.anchorMax = new Vector2(0, 1);
         resetRt.pivot = new Vector2(0, 1);
-        resetRt.anchoredPosition = new Vector2(24, trayBoxRt.anchoredPosition.y - trayBoxRt.sizeDelta.y - resetGapBelowTray);
-        resetRt.sizeDelta = new Vector2(trayBoxRt.sizeDelta.x, 56);
+        resetRt.anchoredPosition = new Vector2(24, defendTray.nextStackTopY);
+        resetRt.sizeDelta = new Vector2(Mathf.Max(attackTray.trayWidth, defendTray.trayWidth), 56);
 
         var resetImg = resetBtnGo.AddComponent<Image>();
         resetImg.color = new Color(0.28f, 0.3f, 0.36f, 0.95f);
@@ -328,6 +361,39 @@ public class PitchSetup : MonoBehaviour
         playText.text = "Play";
         playText.raycastTarget = false;
 
+        const float stripBtnHeight = 52f;
+        const float stripBtnGap = 8f;
+        const float stripBottomPad = 12f;
+        var resetLayoutBtnGo = new GameObject("ResetLayoutButton");
+        resetLayoutBtnGo.transform.SetParent(modeStripGo.transform, false);
+        var resetLayoutBtnRt = resetLayoutBtnGo.AddComponent<RectTransform>();
+        resetLayoutBtnRt.anchorMin = new Vector2(0f, 0f);
+        resetLayoutBtnRt.anchorMax = new Vector2(1f, 0f);
+        resetLayoutBtnRt.pivot = new Vector2(0.5f, 0f);
+        resetLayoutBtnRt.anchoredPosition = new Vector2(0f, stripBottomPad + 2f * (stripBtnHeight + stripBtnGap));
+        resetLayoutBtnRt.sizeDelta = new Vector2(-16f, stripBtnHeight);
+        var resetLayoutImg = resetLayoutBtnGo.AddComponent<Image>();
+        resetLayoutImg.color = new Color(0.28f, 0.3f, 0.36f, 0.95f);
+        var resetLayoutBtn = resetLayoutBtnGo.AddComponent<Button>();
+        resetLayoutBtn.targetGraphic = resetLayoutImg;
+        resetLayoutBtn.onClick.AddListener(OnResetPlayersToStartingPositions);
+        var resetLayoutTextGo = new GameObject("Text");
+        resetLayoutTextGo.transform.SetParent(resetLayoutBtnGo.transform, false);
+        var resetLayoutTextRt = resetLayoutTextGo.AddComponent<RectTransform>();
+        resetLayoutTextRt.anchorMin = Vector2.zero;
+        resetLayoutTextRt.anchorMax = Vector2.one;
+        resetLayoutTextRt.offsetMin = new Vector2(4f, 2f);
+        resetLayoutTextRt.offsetMax = new Vector2(-4f, -2f);
+        var resetLayoutText = resetLayoutTextGo.AddComponent<Text>();
+        resetLayoutText.font = _font;
+        resetLayoutText.fontSize = 17;
+        resetLayoutText.color = new Color(0.95f, 0.95f, 0.95f, 1f);
+        resetLayoutText.alignment = TextAnchor.MiddleCenter;
+        resetLayoutText.horizontalOverflow = HorizontalWrapMode.Wrap;
+        resetLayoutText.verticalOverflow = VerticalWrapMode.Truncate;
+        resetLayoutText.text = "Reset\npositions";
+        resetLayoutText.raycastTarget = false;
+
         var dialogRoot = new GameObject("ResetConfirmDialog");
         dialogRoot.transform.SetParent(canvasGo.transform, false);
         _resetConfirmDialog = dialogRoot;
@@ -432,27 +498,96 @@ public class PitchSetup : MonoBehaviour
         confirmText.raycastTarget = false;
     }
 
-    void CreatePlayerTrayButton(Transform parent, int playerNumber)
+    (float nextStackTopY, float trayWidth) AddSideTray(Transform canvasParent, string title, Color slotColor, int playerIdOffset, float trayTopAnchorY)
     {
-        var go = new GameObject($"Player{playerNumber}TrayItem");
+        const float trayStackGap = 12f;
+        const float trayTitleTopInset = 10f;
+        const float trayTitleTextHeight = 28f;
+        const float trayTitleGapBeforeGrid = 8f;
+        var trayTitleBlock = trayTitleTopInset + trayTitleTextHeight + trayTitleGapBeforeGrid;
+        const float trayContentMargin = 20f;
+
+        var trayBox = new GameObject($"{title}Tray");
+        trayBox.transform.SetParent(canvasParent, false);
+        var trayBoxRt = trayBox.AddComponent<RectTransform>();
+        trayBoxRt.anchorMin = new Vector2(0, 1);
+        trayBoxRt.anchorMax = new Vector2(0, 1);
+        trayBoxRt.pivot = new Vector2(0, 1);
+        trayBoxRt.anchoredPosition = new Vector2(24f, trayTopAnchorY);
+        var trayBg = trayBox.AddComponent<Image>();
+        trayBg.color = new Color(0.1f, 0.11f, 0.14f, 0.88f);
+
+        var trayTitleGo = new GameObject("TrayTitle");
+        trayTitleGo.transform.SetParent(trayBox.transform, false);
+        var trayTitleRt = trayTitleGo.AddComponent<RectTransform>();
+        trayTitleRt.anchorMin = new Vector2(0f, 1f);
+        trayTitleRt.anchorMax = new Vector2(1f, 1f);
+        trayTitleRt.pivot = new Vector2(0.5f, 1f);
+        trayTitleRt.anchoredPosition = new Vector2(0f, -trayTitleTopInset);
+        trayTitleRt.sizeDelta = new Vector2(-20f, trayTitleTextHeight);
+        var trayTitleText = trayTitleGo.AddComponent<Text>();
+        trayTitleText.font = _font;
+        trayTitleText.fontSize = 22;
+        trayTitleText.color = new Color(0.95f, 0.95f, 0.95f, 1f);
+        trayTitleText.alignment = TextAnchor.MiddleCenter;
+        trayTitleText.text = title;
+        trayTitleText.raycastTarget = false;
+
+        var trayContent = new GameObject("TrayContent");
+        trayContent.transform.SetParent(trayBox.transform, false);
+        var trayContentRt = trayContent.AddComponent<RectTransform>();
+        trayContentRt.anchorMin = Vector2.zero;
+        trayContentRt.anchorMax = Vector2.one;
+        trayContentRt.offsetMin = new Vector2(10, 10);
+        trayContentRt.offsetMax = new Vector2(-10, -(10f + trayTitleBlock));
+        var trayGrid = trayContent.AddComponent<GridLayoutGroup>();
+        trayGrid.cellSize = new Vector2(58, 58);
+        trayGrid.spacing = new Vector2(8, 8);
+        trayGrid.padding = new RectOffset(6, 6, 6, 6);
+        trayGrid.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
+        trayGrid.constraintCount = 3;
+        trayGrid.startCorner = GridLayoutGroup.Corner.UpperLeft;
+        trayGrid.startAxis = GridLayoutGroup.Axis.Horizontal;
+        trayGrid.childAlignment = TextAnchor.UpperCenter;
+
+        int trayRows = (PlayerCount + trayGrid.constraintCount - 1) / trayGrid.constraintCount;
+        float gridHeight = trayGrid.padding.vertical + trayRows * trayGrid.cellSize.y
+            + Mathf.Max(0, trayRows - 1) * trayGrid.spacing.y;
+        float gridWidth = trayGrid.padding.horizontal + trayGrid.constraintCount * trayGrid.cellSize.x
+            + Mathf.Max(0, trayGrid.constraintCount - 1) * trayGrid.spacing.x;
+        trayBoxRt.sizeDelta = new Vector2(gridWidth + trayContentMargin, gridHeight + trayContentMargin + trayTitleBlock);
+
+        for (var d = 1; d <= PlayerCount; d++)
+        {
+            var playerId = d + playerIdOffset;
+            CreatePlayerTrayButton(trayContent.transform, d, playerId, slotColor);
+        }
+
+        var nextTop = trayTopAnchorY - trayBoxRt.sizeDelta.y - trayStackGap;
+        return (nextTop, trayBoxRt.sizeDelta.x);
+    }
+
+    void CreatePlayerTrayButton(Transform parent, int displayNumber, int playerId, Color traySlotColor)
+    {
+        var go = new GameObject($"Player{playerId}TrayItem");
         go.transform.SetParent(parent, false);
 
         var rt = go.AddComponent<RectTransform>();
         rt.sizeDelta = PlayerChipSize;
 
         var img = go.AddComponent<Image>();
-        img.color = PlayerChipColor;
+        img.color = traySlotColor;
         img.raycastTarget = true;
 
         var drag = go.AddComponent<PlayerTrayDragItem>();
-        drag.Init(this, playerNumber);
+        drag.Init(this, playerId);
 
         var trayGroup = go.AddComponent<CanvasGroup>();
         trayGroup.alpha = 1f;
         trayGroup.interactable = true;
         trayGroup.blocksRaycasts = true;
 
-        _trayItems[playerNumber] = go;
+        _trayItems[playerId] = go;
 
         var labelGo = new GameObject("Text");
         labelGo.transform.SetParent(go.transform, false);
@@ -466,9 +601,18 @@ public class PitchSetup : MonoBehaviour
         label.fontSize = 24;
         label.color = new Color(0.95f, 0.95f, 0.95f, 1f);
         label.alignment = TextAnchor.MiddleCenter;
-        label.text = playerNumber.ToString();
+        label.text = displayNumber.ToString();
         label.raycastTarget = false;
     }
+
+    static string ChipLabelForPlayerId(int playerId) =>
+        playerId > PlayerCount ? (playerId - PlayerCount).ToString() : playerId.ToString();
+
+    static Color ChipPreviewTint(Color opaque) =>
+        new Color(opaque.r, opaque.g, opaque.b, 0.65f);
+
+    Color PlacedChipColorForPlayerId(int playerId) =>
+        playerId > PlayerCount ? DefendingPlayerChipColor : PlayerChipColor;
 
     public void OnTrayBeginDrag(int playerNumber, PointerEventData eventData)
     {
@@ -481,7 +625,8 @@ public class PitchSetup : MonoBehaviour
         if (_dragPreview != null)
             Destroy(_dragPreview.gameObject);
 
-        _dragPreview = CreatePlayerChip(playerNumber.ToString(), new Color(0.14f, 0.32f, 0.62f, 0.65f), _dragLayer, raycastTarget: false);
+        var previewColor = ChipPreviewTint(PlacedChipColorForPlayerId(playerNumber));
+        _dragPreview = CreatePlayerChip(ChipLabelForPlayerId(playerNumber), previewColor, _dragLayer, raycastTarget: false);
         UpdateDragPreviewPosition(eventData);
     }
 
@@ -514,7 +659,8 @@ public class PitchSetup : MonoBehaviour
         if (!RectTransformUtility.RectangleContainsScreenPoint(_pitchHudArea, eventData.position, null))
             return;
 
-        PlacePlayerChip(playerNumber, eventData.position);
+        PushUndoCurrent();
+        PlacePlayerChipCore(playerNumber, eventData.position);
     }
 
     void UpdateDragPreviewPosition(PointerEventData eventData)
@@ -530,7 +676,7 @@ public class PitchSetup : MonoBehaviour
         }
     }
 
-    void PlacePlayerChip(int playerNumber, Vector2 screenPosition)
+    void PlacePlayerChipCore(int playerNumber, Vector2 screenPosition)
     {
         if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(_pitchHudArea, screenPosition, null, out var localPoint))
             return;
@@ -540,11 +686,20 @@ public class PitchSetup : MonoBehaviour
             existing.anchorMin = new Vector2(0.5f, 0.5f);
             existing.anchorMax = new Vector2(0.5f, 0.5f);
             existing.anchoredPosition = localPoint;
+            _playerStartPitchLocal[playerNumber] = localPoint;
             SetTraySlotForPlayerOnPitch(playerNumber, true);
             return;
         }
 
-        var chip = CreatePlayerChip(playerNumber.ToString(), PlayerChipColor, _pitchHudArea);
+        SpawnPlacedPlayerChip(playerNumber, localPoint);
+        _playerStartPitchLocal[playerNumber] = localPoint;
+        SetTraySlotForPlayerOnPitch(playerNumber, true);
+    }
+
+    RectTransform SpawnPlacedPlayerChip(int playerNumber, Vector2 localPoint)
+    {
+        var chipColor = PlacedChipColorForPlayerId(playerNumber);
+        var chip = CreatePlayerChip(ChipLabelForPlayerId(playerNumber), chipColor, _pitchHudArea);
         chip.gameObject.name = $"Player{playerNumber}Chip";
         chip.anchorMin = new Vector2(0.5f, 0.5f);
         chip.anchorMax = new Vector2(0.5f, 0.5f);
@@ -560,7 +715,7 @@ public class PitchSetup : MonoBehaviour
         eraseTap.Init(this, playerNumber);
 
         _placedPlayers[playerNumber] = chip;
-        SetTraySlotForPlayerOnPitch(playerNumber, true);
+        return chip;
     }
 
     void SetTraySlotForPlayerOnPitch(int playerNumber, bool onPitch)
@@ -588,7 +743,7 @@ public class PitchSetup : MonoBehaviour
 
     public void OnPlacedChipDrag(RectTransform chip, PointerEventData eventData)
     {
-        if (chip == null || _pitchHudArea == null)
+        if (!chip || !_pitchHudArea)
             return;
 
         if (_eraseModeActive)
@@ -678,8 +833,52 @@ public class PitchSetup : MonoBehaviour
 
     void OnResetConfirmed()
     {
+        PushUndoCurrent();
         ResetPlacedPlayers();
         HideResetConfirmDialog();
+    }
+
+    void OnResetPlayersToStartingPositions()
+    {
+        if (_dragPreview != null)
+        {
+            Destroy(_dragPreview.gameObject);
+            _dragPreview = null;
+        }
+
+        _activeLineDrawer?.CancelRubberBand();
+
+        if (_playRoutine != null)
+        {
+            StopCoroutine(_playRoutine);
+            _playRoutine = null;
+        }
+
+        if (_playButton != null)
+            _playButton.interactable = true;
+
+        ClearEraseMode();
+
+        if (_pitchHudArea == null)
+            return;
+
+        PushUndoCurrent();
+
+        var rect = _pitchHudArea.rect;
+        foreach (var kv in _placedPlayers)
+        {
+            var chip = kv.Value;
+            if (chip == null || !_playerStartPitchLocal.TryGetValue(kv.Key, out var home))
+                continue;
+
+            var halfW = chip.sizeDelta.x * 0.5f;
+            var halfH = chip.sizeDelta.y * 0.5f;
+            home.x = Mathf.Clamp(home.x, rect.xMin + halfW, rect.xMax - halfW);
+            home.y = Mathf.Clamp(home.y, rect.yMin + halfH, rect.yMax - halfH);
+            chip.anchorMin = new Vector2(0.5f, 0.5f);
+            chip.anchorMax = new Vector2(0.5f, 0.5f);
+            chip.anchoredPosition = home;
+        }
     }
 
     void ResetPlacedPlayers()
@@ -703,6 +902,8 @@ public class PitchSetup : MonoBehaviour
 
         ClearEraseMode();
 
+        EndActivePlacedChipDragIfNeeded();
+
         foreach (var line in _playerLines.Values)
         {
             if (line != null)
@@ -719,8 +920,9 @@ public class PitchSetup : MonoBehaviour
         }
 
         _placedPlayers.Clear();
+        _playerStartPitchLocal.Clear();
 
-        for (var n = 1; n <= PlayerCount; n++)
+        for (var n = 1; n <= PlayerCount * 2; n++)
             SetTraySlotForPlayerOnPitch(n, false);
     }
 
@@ -915,8 +1117,11 @@ public class PitchSetup : MonoBehaviour
         if (!_placedPlayers.TryGetValue(playerNumber, out var chip) || chip == null)
             return;
 
+        PushUndoCurrent();
+
         Destroy(chip.gameObject);
         _placedPlayers.Remove(playerNumber);
+        _playerStartPitchLocal.Remove(playerNumber);
         RemoveCommittedLineForPlayer(playerNumber);
         SetTraySlotForPlayerOnPitch(playerNumber, false);
     }
@@ -925,6 +1130,8 @@ public class PitchSetup : MonoBehaviour
     {
         if (!_eraseModeActive)
             return;
+
+        PushUndoCurrent();
 
         RemoveCommittedLineForPlayer(playerNumber);
     }
@@ -1034,6 +1241,244 @@ public class PitchSetup : MonoBehaviour
         return path[path.Count - 1];
     }
 
+    void Update()
+    {
+        var kb = Keyboard.current;
+        if (kb == null)
+            return;
+
+        var mod = kb.leftCtrlKey.isPressed || kb.rightCtrlKey.isPressed
+            || kb.leftCommandKey.isPressed || kb.rightCommandKey.isPressed;
+        if (!mod || !kb.zKey.wasPressedThisFrame)
+            return;
+
+        if (kb.leftShiftKey.isPressed || kb.rightShiftKey.isPressed)
+            PerformRedo();
+        else
+            PerformUndo();
+    }
+
+    public void PushUndoCurrent()
+    {
+        CancelTransientForUndo();
+
+        _undo.Add(CaptureSnapshot());
+        if (_undo.Count > MaxUndoDepth)
+            _undo.RemoveAt(0);
+
+        _redo.Clear();
+        RefreshUndoRedoButtons();
+    }
+
+    void PerformUndo()
+    {
+        if (_undo.Count == 0)
+            return;
+
+        CancelTransientForUndo();
+
+        _redo.Add(CaptureSnapshot());
+        var snap = _undo[_undo.Count - 1];
+        _undo.RemoveAt(_undo.Count - 1);
+        ApplySnapshot(snap);
+        RefreshUndoRedoButtons();
+    }
+
+    void PerformRedo()
+    {
+        if (_redo.Count == 0)
+            return;
+
+        CancelTransientForUndo();
+
+        _undo.Add(CaptureSnapshot());
+        var snap = _redo[_redo.Count - 1];
+        _redo.RemoveAt(_redo.Count - 1);
+        ApplySnapshot(snap);
+        RefreshUndoRedoButtons();
+    }
+
+    void CancelTransientForUndo()
+    {
+        if (_dragPreview != null)
+        {
+            Destroy(_dragPreview.gameObject);
+            _dragPreview = null;
+        }
+
+        _activeLineDrawer?.CancelRubberBand();
+    }
+
+    void RefreshUndoRedoButtons()
+    {
+        if (_undoButton != null)
+            _undoButton.interactable = _undo.Count > 0;
+
+        if (_redoButton != null)
+            _redoButton.interactable = _redo.Count > 0;
+    }
+
+    PitchEditorSnapshot CaptureSnapshot()
+    {
+        var s = new PitchEditorSnapshot();
+        foreach (var kv in _placedPlayers)
+        {
+            if (kv.Value == null)
+                continue;
+
+            s.Placed[kv.Key] = kv.Value.anchoredPosition;
+            if (_playerStartPitchLocal.TryGetValue(kv.Key, out var home))
+                s.Start[kv.Key] = home;
+            else
+                s.Start[kv.Key] = kv.Value.anchoredPosition;
+        }
+
+        foreach (var kv in _playerLinePaths)
+        {
+            if (kv.Value != null && kv.Value.Count >= 2)
+                s.Lines[kv.Key] = new List<Vector2>(kv.Value);
+        }
+
+        return s;
+    }
+
+    void ApplySnapshot(PitchEditorSnapshot snap)
+    {
+        if (snap == null || _pitchHudArea == null)
+            return;
+
+        EndActivePlacedChipDragIfNeeded();
+
+        foreach (var line in _playerLines.Values)
+        {
+            if (line != null)
+                Destroy(line.gameObject);
+        }
+
+        _playerLines.Clear();
+        _playerLinePaths.Clear();
+
+        var removeIds = new List<int>();
+        foreach (var kv in _placedPlayers)
+        {
+            if (!snap.Placed.ContainsKey(kv.Key))
+                removeIds.Add(kv.Key);
+        }
+
+        foreach (var id in removeIds)
+        {
+            if (_placedPlayers.TryGetValue(id, out var chip) && chip != null)
+                Destroy(chip.gameObject);
+
+            _placedPlayers.Remove(id);
+            _playerStartPitchLocal.Remove(id);
+            SetTraySlotForPlayerOnPitch(id, false);
+        }
+
+        foreach (var kv in snap.Placed)
+        {
+            var id = kv.Key;
+            var pos = kv.Value;
+            if (!_placedPlayers.TryGetValue(id, out var chip) || chip == null)
+                chip = SpawnPlacedPlayerChip(id, pos);
+            else
+            {
+                chip.anchorMin = new Vector2(0.5f, 0.5f);
+                chip.anchorMax = new Vector2(0.5f, 0.5f);
+                chip.anchoredPosition = pos;
+            }
+
+            if (snap.Start.TryGetValue(id, out var home))
+                _playerStartPitchLocal[id] = home;
+            else
+                _playerStartPitchLocal[id] = pos;
+
+            SetTraySlotForPlayerOnPitch(id, true);
+        }
+
+        foreach (var kv in snap.Lines)
+        {
+            if (kv.Value == null || kv.Value.Count < 2)
+                continue;
+
+            if (!snap.Placed.ContainsKey(kv.Key))
+                continue;
+
+            RestoreCommittedLine(kv.Key, kv.Value);
+        }
+
+        SetLineSegmentsRaycastForErase(_eraseModeActive);
+        RefreshLinesRootSiblingOrder();
+    }
+
+    internal void NotifyPlacedChipDragStarted(RectTransform chip)
+    {
+        if (chip != null && chip)
+            _activePlacedChipDrag = chip;
+    }
+
+    internal void NotifyPlacedChipDragEnded(RectTransform chip)
+    {
+        if (_activePlacedChipDrag == null)
+            return;
+
+        if (chip == null || !chip)
+        {
+            _activePlacedChipDrag = null;
+            return;
+        }
+
+        if (_activePlacedChipDrag == chip)
+            _activePlacedChipDrag = null;
+    }
+
+    void EndActivePlacedChipDragIfNeeded()
+    {
+        var chip = _activePlacedChipDrag;
+        if (chip == null || !chip)
+        {
+            _activePlacedChipDrag = null;
+            return;
+        }
+
+        var es = EventSystem.current;
+        if (es == null)
+        {
+            _activePlacedChipDrag = null;
+            return;
+        }
+
+        var ped = new PointerEventData(es)
+        {
+            pointerId = -1,
+            position = Mouse.current != null ? (Vector3)Mouse.current.position.ReadValue() : Input.mousePosition,
+        };
+
+        ExecuteEvents.Execute(chip.gameObject, ped, ExecuteEvents.endDragHandler);
+
+        if (_activePlacedChipDrag == chip)
+            _activePlacedChipDrag = null;
+    }
+
+    void RestoreCommittedLine(int playerNumber, IReadOnlyList<Vector2> path)
+    {
+        if (path == null || path.Count < 2 || _linesRoot == null)
+            return;
+
+        var lineRoot = CreatePlayerLineRoot();
+        var end = path[path.Count - 1];
+        RebuildPlayerPolyline(lineRoot, path, end, drawTrail: false, playerNumber);
+        _playerLines[playerNumber] = lineRoot;
+        _playerLinePaths[playerNumber] = new List<Vector2>(path);
+    }
+
+    sealed class PitchEditorSnapshot
+    {
+        public readonly Dictionary<int, Vector2> Placed = new();
+        public readonly Dictionary<int, Vector2> Start = new();
+        public readonly Dictionary<int, List<Vector2>> Lines = new();
+    }
+
     void GoHome()
     {
         if (string.IsNullOrEmpty(homeSceneName))
@@ -1042,6 +1487,7 @@ public class PitchSetup : MonoBehaviour
             return;
         }
 
+        _activePlacedChipDrag = null;
         PlayNavContext.CurrentPlay = null;
         SceneManager.LoadScene(homeSceneName);
     }

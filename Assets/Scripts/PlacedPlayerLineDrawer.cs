@@ -25,6 +25,8 @@ public class PlacedPlayerLineDrawer : MonoBehaviour, IBeginDragHandler, IDragHan
         if (_pitch == null || _chip == null || _pitch.EraseModeActive || _pitch.InteractionMode != PitchInteractionMode.DrawLines)
             return;
 
+        _pitch.PushUndoCurrent();
+
         _pitch.SetActiveLineDrawer(this);
         _pitch.RemoveCommittedLineForPlayer(_playerNumber);
         if (_lineRoot != null)

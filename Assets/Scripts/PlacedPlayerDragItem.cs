@@ -14,25 +14,42 @@ public class PlacedPlayerDragItem : MonoBehaviour, IBeginDragHandler, IDragHandl
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (_pitchSetup != null && _pitchSetup.EraseModeActive)
+        if (!CanInteractWithPlacedChipDrag())
             return;
 
-        _pitchSetup?.OnPlacedChipDrag(_chipRect, eventData);
+        if (_pitchSetup.InteractionMode == PitchInteractionMode.DragPlayers)
+            _pitchSetup.PushUndoCurrent();
+
+        _pitchSetup.OnPlacedChipDrag(_chipRect, eventData);
+
+        if (_pitchSetup.InteractionMode == PitchInteractionMode.DragPlayers)
+            _pitchSetup.NotifyPlacedChipDragStarted(_chipRect);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (_pitchSetup != null && _pitchSetup.EraseModeActive)
+        if (!CanInteractWithPlacedChipDrag())
             return;
 
-        _pitchSetup?.OnPlacedChipDrag(_chipRect, eventData);
+        _pitchSetup.OnPlacedChipDrag(_chipRect, eventData);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (_pitchSetup != null && _pitchSetup.EraseModeActive)
+        _pitchSetup?.NotifyPlacedChipDragEnded(_chipRect);
+
+        if (!CanInteractWithPlacedChipDrag())
             return;
 
-        _pitchSetup?.OnPlacedChipDrag(_chipRect, eventData);
+        _pitchSetup.OnPlacedChipDrag(_chipRect, eventData);
+    }
+
+    bool CanInteractWithPlacedChipDrag()
+    {
+        if (_pitchSetup == null || !_pitchSetup || _chipRect == null || !_chipRect)
+            return false;
+        if (_pitchSetup.EraseModeActive)
+            return false;
+        return true;
     }
 }
