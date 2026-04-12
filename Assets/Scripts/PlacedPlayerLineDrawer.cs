@@ -84,7 +84,7 @@ public class PlacedPlayerLineDrawer : MonoBehaviour, IBeginDragHandler, IDragHan
             return;
         }
 
-        _pitch.CommitPlayerLine(_playerNumber, _lineRoot);
+        _pitch.CommitPlayerLine(_playerNumber, _lineRoot, _path);
         _lineRoot = null;
         _path.Clear();
     }

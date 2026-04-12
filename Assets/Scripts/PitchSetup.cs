@@ -1,9 +1,10 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using System.Collections.Generic;
 
 public enum PitchInteractionMode
 {
@@ -17,6 +18,7 @@ public enum PitchInteractionMode
 public class PitchSetup : MonoBehaviour
 {
     const int PlayerCount = 15;
+    const float PlayMoveSpeed = 320f;
     static readonly Vector2 PlayerChipSize = new Vector2(58, 58);
     static readonly Color PlayerChipColor = new Color(0.14f, 0.32f, 0.62f, 1f);
 
@@ -33,12 +35,15 @@ public class PitchSetup : MonoBehaviour
     readonly Dictionary<int, GameObject> _trayItems = new();
     readonly Dictionary<int, RectTransform> _placedPlayers = new();
     readonly Dictionary<int, RectTransform> _playerLines = new();
+    readonly Dictionary<int, List<Vector2>> _playerLinePaths = new();
     RectTransform _linesRoot;
     PlacedPlayerLineDrawer _activeLineDrawer;
     RectTransform _dragPreview;
     GameObject _resetConfirmDialog;
     PitchInteractionMode _interactionMode = PitchInteractionMode.DragPlayers;
     Text _interactionModeButtonLabel;
+    Button _playButton;
+    Coroutine _playRoutine;
 
     void Awake()
     {
@@ -232,11 +237,11 @@ public class PitchSetup : MonoBehaviour
         var modeBtnGo = new GameObject("InteractionModeButton");
         modeBtnGo.transform.SetParent(modeStripGo.transform, false);
         var modeBtnRt = modeBtnGo.AddComponent<RectTransform>();
-        modeBtnRt.anchorMin = new Vector2(0f, 0.5f);
-        modeBtnRt.anchorMax = new Vector2(1f, 0.5f);
-        modeBtnRt.pivot = new Vector2(0.5f, 0.5f);
+        modeBtnRt.anchorMin = new Vector2(0f, 1f);
+        modeBtnRt.anchorMax = new Vector2(1f, 1f);
+        modeBtnRt.pivot = new Vector2(0.5f, 1f);
+        modeBtnRt.anchoredPosition = new Vector2(0f, -12f);
         modeBtnRt.sizeDelta = new Vector2(-16f, 120f);
-        modeBtnRt.anchoredPosition = Vector2.zero;
         var modeBtnImg = modeBtnGo.AddComponent<Image>();
         modeBtnImg.color = new Color(0.28f, 0.3f, 0.36f, 0.95f);
         var modeBtn = modeBtnGo.AddComponent<Button>();
@@ -258,6 +263,35 @@ public class PitchSetup : MonoBehaviour
         _interactionModeButtonLabel.verticalOverflow = VerticalWrapMode.Truncate;
         _interactionModeButtonLabel.raycastTarget = false;
         RefreshInteractionModeButtonLabel();
+
+        var playBtnGo = new GameObject("PlayButton");
+        playBtnGo.transform.SetParent(modeStripGo.transform, false);
+        var playBtnRt = playBtnGo.AddComponent<RectTransform>();
+        playBtnRt.anchorMin = new Vector2(0f, 0f);
+        playBtnRt.anchorMax = new Vector2(1f, 0f);
+        playBtnRt.pivot = new Vector2(0.5f, 0f);
+        playBtnRt.anchoredPosition = new Vector2(0f, 12f);
+        playBtnRt.sizeDelta = new Vector2(-16f, 52f);
+        var playImg = playBtnGo.AddComponent<Image>();
+        playImg.color = new Color(0.28f, 0.3f, 0.36f, 0.95f);
+        var playBtn = playBtnGo.AddComponent<Button>();
+        playBtn.targetGraphic = playImg;
+        playBtn.onClick.AddListener(OnPlayPressed);
+        _playButton = playBtn;
+        var playTextGo = new GameObject("Text");
+        playTextGo.transform.SetParent(playBtnGo.transform, false);
+        var playTextRt = playTextGo.AddComponent<RectTransform>();
+        playTextRt.anchorMin = Vector2.zero;
+        playTextRt.anchorMax = Vector2.one;
+        playTextRt.offsetMin = Vector2.zero;
+        playTextRt.offsetMax = Vector2.zero;
+        var playText = playTextGo.AddComponent<Text>();
+        playText.font = _font;
+        playText.fontSize = 22;
+        playText.color = new Color(0.95f, 0.95f, 0.95f, 1f);
+        playText.alignment = TextAnchor.MiddleCenter;
+        playText.text = "Play";
+        playText.raycastTarget = false;
 
         var dialogRoot = new GameObject("ResetConfirmDialog");
         dialogRoot.transform.SetParent(canvasGo.transform, false);
@@ -607,6 +641,15 @@ public class PitchSetup : MonoBehaviour
 
         _activeLineDrawer?.CancelRubberBand();
 
+        if (_playRoutine != null)
+        {
+            StopCoroutine(_playRoutine);
+            _playRoutine = null;
+        }
+
+        if (_playButton != null)
+            _playButton.interactable = true;
+
         foreach (var line in _playerLines.Values)
         {
             if (line != null)
@@ -614,6 +657,7 @@ public class PitchSetup : MonoBehaviour
         }
 
         _playerLines.Clear();
+        _playerLinePaths.Clear();
 
         foreach (var chip in _placedPlayers.Values)
         {
@@ -640,6 +684,7 @@ public class PitchSetup : MonoBehaviour
 
     internal void RemoveCommittedLineForPlayer(int playerNumber)
     {
+        _playerLinePaths.Remove(playerNumber);
         if (_playerLines.TryGetValue(playerNumber, out var line) && line != null)
         {
             Destroy(line.gameObject);
@@ -666,7 +711,7 @@ public class PitchSetup : MonoBehaviour
             return;
 
         for (int i = lineRoot.childCount - 1; i >= 0; i--)
-            Object.DestroyImmediate(lineRoot.GetChild(i).gameObject);
+            UnityEngine.Object.DestroyImmediate(lineRoot.GetChild(i).gameObject);
 
         if (anchors == null || anchors.Count < 1)
             return;
@@ -730,13 +775,119 @@ public class PitchSetup : MonoBehaviour
         return local;
     }
 
-    internal void CommitPlayerLine(int playerNumber, RectTransform lineRt)
+    internal void CommitPlayerLine(int playerNumber, RectTransform lineRt, IReadOnlyList<Vector2> pathPoints)
     {
         if (lineRt == null)
             return;
 
         RemoveCommittedLineForPlayer(playerNumber);
         _playerLines[playerNumber] = lineRt;
+
+        if (pathPoints != null && pathPoints.Count >= 2)
+            _playerLinePaths[playerNumber] = new List<Vector2>(pathPoints);
+    }
+
+    void OnPlayPressed()
+    {
+        if (_playRoutine != null)
+            return;
+
+        _playRoutine = StartCoroutine(RunPlayAnimations());
+    }
+
+    IEnumerator RunPlayAnimations()
+    {
+        if (_playButton != null)
+            _playButton.interactable = false;
+
+        var pending = 0;
+        foreach (var kv in _placedPlayers)
+        {
+            var chip = kv.Value;
+            if (chip == null)
+                continue;
+
+            if (!_playerLinePaths.TryGetValue(kv.Key, out var path) || path == null || path.Count < 2)
+                continue;
+
+            pending++;
+            var pathCopy = new List<Vector2>(path);
+            StartCoroutine(AnimateChipAlongPath(chip, pathCopy, () => pending--));
+        }
+
+        while (pending > 0)
+            yield return null;
+
+        if (_playButton != null)
+            _playButton.interactable = true;
+
+        _playRoutine = null;
+    }
+
+    IEnumerator AnimateChipAlongPath(RectTransform chip, List<Vector2> path, System.Action onComplete)
+    {
+        try
+        {
+            if (chip == null || path == null || path.Count < 2)
+                yield break;
+
+            var len = PolylineLength(path);
+            if (len < 0.001f)
+                yield break;
+
+            var duration = len / PlayMoveSpeed;
+            var u = 0f;
+            while (u < duration && chip != null)
+            {
+                u += Time.deltaTime;
+                chip.anchoredPosition = GetPointAlongPolyline(path, Mathf.Clamp01(u / duration));
+                yield return null;
+            }
+
+            if (chip != null)
+                chip.anchoredPosition = path[path.Count - 1];
+        }
+        finally
+        {
+            onComplete?.Invoke();
+        }
+    }
+
+    static float PolylineLength(IReadOnlyList<Vector2> path)
+    {
+        if (path == null || path.Count < 2)
+            return 0f;
+
+        var t = 0f;
+        for (var i = 0; i < path.Count - 1; i++)
+            t += Vector2.Distance(path[i], path[i + 1]);
+
+        return t;
+    }
+
+    static Vector2 GetPointAlongPolyline(IReadOnlyList<Vector2> path, float t)
+    {
+        if (path == null || path.Count == 0)
+            return Vector2.zero;
+
+        if (path.Count == 1)
+            return path[0];
+
+        var total = PolylineLength(path);
+        if (total < 0.0001f)
+            return path[0];
+
+        var dist = t * total;
+        for (var i = 0; i < path.Count - 1; i++)
+        {
+            var seg = Vector2.Distance(path[i], path[i + 1]);
+            if (dist <= seg)
+                return Vector2.Lerp(path[i], path[i + 1], seg > 0.0001f ? dist / seg : 0f);
+
+            dist -= seg;
+        }
+
+        return path[path.Count - 1];
     }
 
     void GoHome()
