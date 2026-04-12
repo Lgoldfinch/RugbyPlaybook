@@ -31,6 +31,9 @@ public class PitchSetup : MonoBehaviour
     RectTransform _pitchHudArea;
     RectTransform _dragLayer;
     readonly Dictionary<int, RectTransform> _placedPlayers = new();
+    readonly Dictionary<int, RectTransform> _playerLines = new();
+    RectTransform _linesRoot;
+    PlacedPlayerLineDrawer _activeLineDrawer;
     RectTransform _dragPreview;
     GameObject _resetConfirmDialog;
     PitchInteractionMode _interactionMode = PitchInteractionMode.DragPlayers;
@@ -127,6 +130,15 @@ public class PitchSetup : MonoBehaviour
         const float modeStripWidth = 128f;
         _pitchHudArea.offsetMin = new Vector2(260, 20);
         _pitchHudArea.offsetMax = new Vector2(-(20f + modeStripWidth), -20);
+
+        var linesRootGo = new GameObject("LinesRoot");
+        linesRootGo.transform.SetParent(_pitchHudArea.transform, false);
+        _linesRoot = linesRootGo.AddComponent<RectTransform>();
+        _linesRoot.anchorMin = Vector2.zero;
+        _linesRoot.anchorMax = Vector2.one;
+        _linesRoot.offsetMin = Vector2.zero;
+        _linesRoot.offsetMax = Vector2.zero;
+        linesRootGo.transform.SetAsFirstSibling();
 
         var dragLayerGo = new GameObject("DragLayer");
         dragLayerGo.transform.SetParent(canvasGo.transform, false);
@@ -383,6 +395,9 @@ public class PitchSetup : MonoBehaviour
 
     public void OnTrayBeginDrag(int playerNumber, PointerEventData eventData)
     {
+        if (_interactionMode != PitchInteractionMode.DragPlayers)
+            return;
+
         if (_dragPreview != null)
             Destroy(_dragPreview.gameObject);
 
@@ -392,6 +407,9 @@ public class PitchSetup : MonoBehaviour
 
     public void OnTrayDrag(PointerEventData eventData)
     {
+        if (_interactionMode != PitchInteractionMode.DragPlayers)
+            return;
+
         UpdateDragPreviewPosition(eventData);
     }
 
@@ -400,6 +418,9 @@ public class PitchSetup : MonoBehaviour
         if (_dragPreview != null)
             Destroy(_dragPreview.gameObject);
         _dragPreview = null;
+
+        if (_interactionMode != PitchInteractionMode.DragPlayers)
+            return;
 
         if (_pitchHudArea == null)
             return;
@@ -445,12 +466,18 @@ public class PitchSetup : MonoBehaviour
         var drag = chip.gameObject.AddComponent<PlacedPlayerDragItem>();
         drag.Init(this, chip);
 
+        var lineDrawer = chip.gameObject.AddComponent<PlacedPlayerLineDrawer>();
+        lineDrawer.Init(this, chip, playerNumber);
+
         _placedPlayers[playerNumber] = chip;
     }
 
     public void OnPlacedChipDrag(RectTransform chip, PointerEventData eventData)
     {
         if (chip == null || _pitchHudArea == null)
+            return;
+
+        if (_interactionMode != PitchInteractionMode.DragPlayers)
             return;
 
         if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(_pitchHudArea, eventData.position, null, out var localPoint))
@@ -513,6 +540,7 @@ public class PitchSetup : MonoBehaviour
 
     void CycleInteractionMode()
     {
+        _activeLineDrawer?.CancelRubberBand();
         var modes = System.Enum.GetValues(typeof(PitchInteractionMode));
         _interactionMode = (PitchInteractionMode)(((int)_interactionMode + 1) % modes.Length);
         RefreshInteractionModeButtonLabel();
@@ -544,6 +572,16 @@ public class PitchSetup : MonoBehaviour
             _dragPreview = null;
         }
 
+        _activeLineDrawer?.CancelRubberBand();
+
+        foreach (var line in _playerLines.Values)
+        {
+            if (line != null)
+                Destroy(line.gameObject);
+        }
+
+        _playerLines.Clear();
+
         foreach (var chip in _placedPlayers.Values)
         {
             if (chip != null)
@@ -551,6 +589,118 @@ public class PitchSetup : MonoBehaviour
         }
 
         _placedPlayers.Clear();
+    }
+
+    internal void SetActiveLineDrawer(PlacedPlayerLineDrawer drawer)
+    {
+        _activeLineDrawer = drawer;
+    }
+
+    internal void ClearActiveLineDrawer(PlacedPlayerLineDrawer drawer)
+    {
+        if (_activeLineDrawer == drawer)
+            _activeLineDrawer = null;
+    }
+
+    internal void RemoveCommittedLineForPlayer(int playerNumber)
+    {
+        if (_playerLines.TryGetValue(playerNumber, out var line) && line != null)
+        {
+            Destroy(line.gameObject);
+            _playerLines.Remove(playerNumber);
+        }
+    }
+
+    internal RectTransform CreatePlayerLineRoot()
+    {
+        var go = new GameObject("PlayerLine");
+        go.transform.SetParent(_linesRoot, false);
+        var rt = go.AddComponent<RectTransform>();
+        rt.anchorMin = Vector2.zero;
+        rt.anchorMax = Vector2.one;
+        rt.offsetMin = Vector2.zero;
+        rt.offsetMax = Vector2.zero;
+        rt.pivot = new Vector2(0.5f, 0.5f);
+        return rt;
+    }
+
+    internal void RebuildPlayerPolyline(RectTransform lineRoot, IReadOnlyList<Vector2> anchors, Vector2 trailEnd, bool drawTrail)
+    {
+        if (lineRoot == null)
+            return;
+
+        for (int i = lineRoot.childCount - 1; i >= 0; i--)
+            Object.DestroyImmediate(lineRoot.GetChild(i).gameObject);
+
+        if (anchors == null || anchors.Count < 1)
+            return;
+
+        for (int i = 0; i < anchors.Count - 1; i++)
+            AddLineSegmentChild(lineRoot, anchors[i], anchors[i + 1]);
+
+        if (drawTrail && anchors.Count > 0)
+        {
+            var from = anchors[anchors.Count - 1];
+            if ((trailEnd - from).sqrMagnitude > 0.0001f)
+                AddLineSegmentChild(lineRoot, from, trailEnd);
+        }
+    }
+
+    void AddLineSegmentChild(Transform parent, Vector2 startLocal, Vector2 endLocal)
+    {
+        var go = new GameObject("Segment");
+        go.transform.SetParent(parent, false);
+        var rt = go.AddComponent<RectTransform>();
+        rt.anchorMin = new Vector2(0.5f, 0.5f);
+        rt.anchorMax = new Vector2(0.5f, 0.5f);
+        rt.pivot = new Vector2(0f, 0.5f);
+        var img = go.AddComponent<Image>();
+        img.color = Color.black;
+        img.raycastTarget = false;
+        LayoutLineSegment(rt, startLocal, endLocal);
+    }
+
+    internal void LayoutLineSegment(RectTransform lineRt, Vector2 startLocal, Vector2 endLocal)
+    {
+        if (lineRt == null)
+            return;
+
+        var delta = endLocal - startLocal;
+        var len = delta.magnitude;
+        if (len < 0.001f)
+            len = 0.001f;
+
+        var angle = Mathf.Atan2(delta.y, delta.x) * Mathf.Rad2Deg;
+        lineRt.anchorMin = new Vector2(0.5f, 0.5f);
+        lineRt.anchorMax = new Vector2(0.5f, 0.5f);
+        lineRt.pivot = new Vector2(0f, 0.5f);
+        lineRt.anchoredPosition = startLocal;
+        lineRt.localRotation = Quaternion.Euler(0f, 0f, angle);
+        lineRt.sizeDelta = new Vector2(len, 2f);
+    }
+
+    internal Vector2 ScreenPointToClampedPitchLocal(Vector2 screenPosition)
+    {
+        if (_pitchHudArea == null)
+            return Vector2.zero;
+
+        if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(_pitchHudArea, screenPosition, null, out var local))
+            return Vector2.zero;
+
+        const float margin = 1f;
+        var r = _pitchHudArea.rect;
+        local.x = Mathf.Clamp(local.x, r.xMin + margin, r.xMax - margin);
+        local.y = Mathf.Clamp(local.y, r.yMin + margin, r.yMax - margin);
+        return local;
+    }
+
+    internal void CommitPlayerLine(int playerNumber, RectTransform lineRt)
+    {
+        if (lineRt == null)
+            return;
+
+        RemoveCommittedLineForPlayer(playerNumber);
+        _playerLines[playerNumber] = lineRt;
     }
 
     void GoHome()
